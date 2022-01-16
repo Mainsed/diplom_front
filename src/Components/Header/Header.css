@@ -1,0 +1,24 @@
+.title {
+  background-color: #BFCC94;
+  transition: all 0.5s;
+}
+.title:hover {
+  background-color: #dfe3de;
+}
+.titleNavActive {
+  background-color: #F0F4EF !important;
+}
+.nav {
+  transition: all 0.5s;
+  padding: 10px 0px;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  color: black;
+}
+.mainContainer {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
