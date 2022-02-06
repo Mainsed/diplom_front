@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Grid } from '@mui/material'
 import './Header.css'
 import { NavLink } from 'react-router-dom';
+import { translateUkr } from '../../constants.ua'
+import Cookies from 'universal-cookie';
 
-const headers = [
-  { text: 'Історія кафедри', url: 'history' },
-  { text: 'Спеціальності', url: 'speciality' },
-  { text: 'Головна', url: 'home' },
-  { text: 'Дисципліни', url: 'disciplines' },
-  { text: 'Оснащення кафедри', url: 'tools' },
-  { text: 'Викладачі', url: 'teachers' }
-]
+const Header = (props) => {
+  useEffect(()=>{
+    const cookies = new Cookies();
+    const language = +cookies.get('language');
+    language && props.setLanguage(language);
+  })
 
-const Header = () => {
+  const phrases = props.language === 1 ? translateUkr : translateUkr;
+
+  const headers = [
+    { text: phrases['HEADER-FOR-ABITURIENT'], url: 'abiturient' },
+    { text: phrases['HEADER-SPECIALITIES'], url: 'speciality' },
+    { text: phrases['HEADER-MAIN'], url: 'home' },
+    { text: phrases['HEADER-DISCIPLINES'], url: 'disciplines' },
+    { text: phrases['HEADER-TEACHERS'], url: 'teachers' },
+    { text: phrases['HEADER-FAQ'], url: 'faq' },
+  ]
   return (
     <div>
       <Grid container className='mainContainer'>

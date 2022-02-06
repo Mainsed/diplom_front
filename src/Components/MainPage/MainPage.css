@@ -12,5 +12,15 @@
   padding-bottom: 10px;
 }
 .paper {
-  padding: 10px
+  padding: 20px;
+  margin: 10px;
+}
+.divider {
+  margin: 10px !important;
+}
+.additionalContent {
+  padding: 0px 10px 10px 10px;
+}
+.partMargin{
+  margin: 20px 0px !important;
 }

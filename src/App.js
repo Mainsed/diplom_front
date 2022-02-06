@@ -1,12 +1,12 @@
 import React from 'react'
 import './App.css';
-import Header from './Components/Header/Header';
-import Footer from './Components/Footer/Footer'
 import RouteController from './Components/RouteController/RouteController'
+import FooterContainer from './Containers/FooterContainer';
+import HeaderContainer from './Containers/HeaderContainer';
 const App = () => <div>
-  <Header />
+  <HeaderContainer />
   <RouteController />
-  <Footer/>
+  <FooterContainer/>
 </div>
 
 export default App;

@@ -1,4 +1,9 @@
-.mainContainer {
-  background-color: #BFCC94;
+.mainFooterContainer {
+  color: #ebd9c8 !important;
+  padding: 15px;
+  background-color: #003f5a;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.selectRoot {
+  color: 'red' !important,
 }
