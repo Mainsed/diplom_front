@@ -15,7 +15,7 @@ const Header = (props) => {
   const phrases = props.language === 1 ? translateUkr : translateUkr;
 
   const headers = [
-    { text: phrases['HEADER-FOR-ABITURIENT'], url: 'abiturient' },
+    { text: phrases['HEADER-FOR-ABITURIENT'], url: 'forentrant' },
     { text: phrases['HEADER-SPECIALITIES'], url: 'speciality' },
     { text: phrases['HEADER-MAIN'], url: 'home' },
     { text: phrases['HEADER-DISCIPLINES'], url: 'disciplines' },
