@@ -3,6 +3,7 @@ import { Grid } from '@mui/material'
 import './Header.css'
 import { NavLink } from 'react-router-dom';
 import { translateUkr } from '../../constants.ua'
+import { translateEng } from '../../constants.eng'
 import Cookies from 'universal-cookie';
 
 const Header = (props) => {
@@ -12,14 +13,14 @@ const Header = (props) => {
     language && props.setLanguage(language);
   })
 
-  const phrases = props.language === 1 ? translateUkr : translateUkr;
+  const phrases = props.language === 1 ? translateUkr : translateEng;
 
   const headers = [
     { text: phrases['HEADER-FOR-ABITURIENT'], url: 'forentrant' },
     { text: phrases['HEADER-SPECIALITIES'], url: 'speciality' },
     { text: phrases['HEADER-MAIN'], url: 'home' },
     { text: phrases['HEADER-DISCIPLINES'], url: 'disciplines' },
-    { text: phrases['HEADER-TEACHERS'], url: 'teachers' },
+    { text: phrases['HEADER-WORK'], url: 'employment' },
     { text: phrases['HEADER-FAQ'], url: 'faq' },
   ]
   return (

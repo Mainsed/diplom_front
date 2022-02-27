@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { createTheme, FormControl, Grid, InputLabel, MenuItem, Select, Typography, ThemeProvider, Divider, TextField } from '@mui/material'
-import { grey } from '@mui/material/colors';
+import { createTheme, FormControl, Grid, InputLabel, MenuItem, Select, Typography, ThemeProvider, Divider } from '@mui/material'
 import './Footer.css'
 import '../../App.css'
 import { translateUkr } from '../../constants.ua'
+import { translateEng } from '../../constants.eng'
 import { makeStyles } from '@mui/styles';
 
 import Cookies from 'universal-cookie';
@@ -50,7 +50,7 @@ const Footer = (props) => {
 
   const [language, setLanguage] = useState(1)
 
-  const phrases = props.language === 1 ? translateUkr : translateUkr;
+  const phrases = props.language === 1 ? translateUkr : translateEng;
 
   return (
     <div>

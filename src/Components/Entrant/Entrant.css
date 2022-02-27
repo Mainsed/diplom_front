@@ -1,3 +1,6 @@
-.entrantExamList{
-  margin-top: 5px;
+.entrantElement {
+  padding: 10px;
+}
+.entrantListElement {
+  margin: 5px 0px !important;
 }

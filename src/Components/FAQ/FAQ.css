@@ -1,0 +1,10 @@
+.faqElement {
+  margin: 10px 0px !important;
+}
+.transitionFaqElement {
+  transition: all 0.5s;
+}
+
+.faqHidden {
+  display: none;
+}

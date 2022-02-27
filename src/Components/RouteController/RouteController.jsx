@@ -3,14 +3,18 @@ import React from "react";
 import { Box } from "@mui/material";
 import MainPageContainer from "../../Containers/MainPageContainer";
 import Cooperation from "../Cooperation/Cooperation";
-import Entrant from "../Entrant/Entrant";
+import EntrantContainer from "../../Containers/EntrantContainer";
+import EmploymentContainer from "../../Containers/EmploymentContainer";
+import FAQContainer from "../../Containers/FAQContainer";
 
 const RouteController = () => (
   <Box style={{ padding: '20px' }}>
     <Routes>
       <Route exact path={'/home'} element={<MainPageContainer />} />
       <Route exact path={'/cooperation'}element={<Cooperation />} />
-      <Route exact path={'/forentrant'}element={<Entrant />} />
+      <Route exact path={'/forentrant'}element={<EntrantContainer />} />
+      <Route exact path={'/employment'}element={<EmploymentContainer />} />
+      <Route exact path={'/faq'}element={<FAQContainer />} />
       <Route path="*" element={<Navigate to="/home" />} />
     </Routes>
   </Box>
