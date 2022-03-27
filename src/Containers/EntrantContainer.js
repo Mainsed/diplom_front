@@ -13,6 +13,8 @@ const EntrantContainer = (props) => {
 const mapStateToProps = (state) => {
   return {
     language: state.general.language,
+    professionList: state.general.professionList,
+    programmingLanguages: state.general.programmingLanguages,
   }
 }
 

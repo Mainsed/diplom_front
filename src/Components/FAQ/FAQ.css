@@ -1,5 +1,6 @@
 .faqElement {
   margin: 10px 0px !important;
+  padding: 10px;
 }
 .transitionFaqElement {
   transition: all 0.5s;

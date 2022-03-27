@@ -19,10 +19,11 @@ const createData = (name, writePercent, change, writeNum, useSecondary, useNow, 
 const Entrant = (props) => {
   const phrases = props.language === 1 ? translateUkr : translateEng;
 
-  const rows = [
-    createData('JavaScript', '18.8', '+0.17', '1601', '3385', '1089', '49.8'),
-    createData('C#', '14.7', '-0.02', '1252', '469', '455', '81.3'),
-  ];
+  const rows = props.programmingLanguages.map(lang=>createData(lang.name, lang.writeNowPerc, lang.change, lang.writeNow, lang.useSec, lang.usePrim, lang.index));
+  // [
+  //   createData('JavaScript', '18.8', '+0.17', '1601', '3385', '1089', '49.8'),
+  //   createData('C#', '14.7', '-0.02', '1252', '469', '455', '81.3'),
+  // ];
 
   const [order, setOrder] = React.useState('desc');
   const [orderBy, setOrderBy] = React.useState('name');
@@ -40,35 +41,35 @@ const Entrant = (props) => {
   const headCells = [
     {
       id: 'name',
-      label: 'Мова програмування',
+      label: phrases['TABLE-ENTRANT-LANGUAGE'],
     },
     {
       id: 'writePercent',
-      label: 'Пишуть для роботи зараз, %',
+      label: phrases['TABLE-ENTRANT-WRITE-NOW-PERC'],
     },
     {
       id: 'change',
-      label: 'Зміни',
+      label: phrases['TABLE-ENTRANT-CHANGE'],
     },
     {
       id: 'writeNum',
-      label: 'Пишуть для роботи зараз',
+      label: phrases['TABLE-ENTRANT-WRITE-NOW'],
     },
     {
       id: 'useSecondary',
-      label: 'Використовують як додаткові',
+      label: phrases['TABLE-ENTRANT-USE-SECONDARY'],
     },
     {
       id: 'useNow',
-      label: 'Використовують в своїх проектах',
+      label: phrases['TABLE-ENTRANT-USE-PRIMARY'],
     },
     {
       id: 'rate',
-      label: 'Індекс вподобання',
+      label: phrases['TABLE-ENTRANT-LIKE-INDEX'],
     },
   ];
 
-  const proffesions = phrases['PROFESSION-LIST']
+  const proffesions = props.professionList;
   const exams = phrases['ENTRANT-EXAM-SCHEDULE'].split(',')
   return <Paper elevation={10}>
     <Grid container justifyContent={'space-evenly'}>
@@ -92,7 +93,7 @@ const Entrant = (props) => {
           <Typography align='center'>{phrases['ENTRANT-EXAM-EXTRA-SESSION-TITLE']}</Typography>
           <Typography className='entrantListElement'>{phrases['ENTRANT-EXAM-EXTRA-SESSION']}</Typography>
           <Grid container justifyContent={'center'}>
-            <Button>
+            <Button size='large'>
               <a href="https://zno.testportal.com.ua/registration" className='link'>{phrases['EXAM-REGISTER']}</a>
             </Button>
           </Grid>
@@ -104,10 +105,10 @@ const Entrant = (props) => {
           <Typography align='center' variant='h6'>{phrases['UNIVERSITY-ENTRY-DOCUMENT-LIST-TITLE']}</Typography>
           {phrases['UNIVERSITY-ENTRY-DOCUMENT-LIST-ARRAY'].map((item) => <Typography className='entrantListElement' key={item}>{item}</Typography>)}
           <Grid container justifyContent={'space-evenly'}>
-            <Button className='entrantListElement'>
+            <Button className='entrantListElement' size='large'>
               <a href="https://pk.zp.edu.ua/pravyla-pryjomu/abituriyentam-pilgovyh-kategorij" className='link'>{phrases['UNIVERSITY-ENTRY-QUESTIONS']}</a>
             </Button>
-            <Button className='entrantListElement'>
+            <Button className='entrantListElement' size='large'>
               <a href="https://pk.zp.edu.ua/" className='link'>{phrases['UNIVERSITY-ENTRY-BENEFITS']}</a>
             </Button>
           </Grid>
@@ -120,22 +121,22 @@ const Entrant = (props) => {
           {proffesions.map((prof) => <Grid item xs={12} md={6} className='partMainPadding' key={prof.name}>
             <Grid container className='containerFullHeight' direction={'column'} justifyContent='space-between'>
               <Typography align='center'>
-                <a href={prof.link} className='link'>{prof.name}</a>
+                <a href={prof.link} className='link'>{prof[`name${props.language === 2 ? 'En' : ''}`]}</a>
               </Typography>
               <ul>
-                {prof.requirements.map(req => <li key={req}>
+                {prof[`requirements${props.language === 2 ? 'En' : ''}`].map(req => <li key={req}>
                   <Typography>{req}</Typography>
                 </li>)}
               </ul>
               <Grid container>
                 <Grid item xs={12} md={4}>
-                  <Typography>{phrases['AVERAGE-PAYMENT']} {prof.averagePayment}</Typography>
+                  <Typography align='center'>{phrases['AVERAGE-PAYMENT']} {prof.averagePayment}</Typography>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                  <Typography>{phrases['MAX-PAYMENT']} {prof.maxPayment}</Typography>
+                  <Typography align='center'>{phrases['MAX-PAYMENT']} {prof.maxPayment}</Typography>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                  <Typography>{phrases['VACANCIES-NUMBER']} {prof.vacanciesNumber}</Typography>
+                  <Typography align='center'>{phrases['VACANCIES-NUMBER']} {prof.vacanciesNumber}</Typography>
                 </Grid>
               </Grid>
               <Divider />
@@ -143,7 +144,7 @@ const Entrant = (props) => {
           </Grid>)}
         </Grid>
       </Grid>
-      <Typography className='entrantElement'>Список мов програмування та їх популярність</Typography>
+      <Typography className='entrantElement'>{phrases['TABLE-ENTRANT-TITLE']}</Typography>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>

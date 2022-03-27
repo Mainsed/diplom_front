@@ -11,25 +11,25 @@ const Entrant = (props) => {
   const employmentMaterials = props.employmentMaterials
 
   return <Paper elevation={10} className='paper'>
-    <Typography variant='h6' align='center'>Партнери кафедри, які пропонують співпрацю студентам</Typography>
+    <Typography variant='h6' align='center'>{phrases['EMPLOYMENT-PARTNERS-TITLE']}</Typography>
     <Grid container className='partMargin'>
       {partnersInfo && partnersInfo.map((partnerInfo, i) => {
         return <Grid item xs={12} md={6} className='employmentElement' key={partnerInfo.name + i}>
           <Typography variant='h5' align='center'>
             <a href={partnerInfo.link} className='link'>{partnerInfo.name}</a>
           </Typography>
-          {partnerInfo.headerText.map(text => <Typography variant='h6' key={text + i}>{text}</Typography>)}
-          {partnerInfo.mainText.map(text => <Typography key={text + i}>{text}</Typography>)}
+          {partnerInfo[`headerText${props.language === 2 ? 'En' : ''}`].map(text => <Typography variant='h6' key={text + i}>{text}</Typography>)}
+          {partnerInfo[`mainText${props.language === 2 ? 'En' : ''}`].map(text => <Typography key={text + i}>{text}</Typography>)}
         </Grid>
       })}
     </Grid>
-    <Typography variant='h6' align='center'>Цікаві матеріали</Typography>
+    <Typography variant='h6' align='center'>{phrases['INTERESTING-INFO-TITLE']}</Typography>
     <Grid container justifyItems={'space-evenly'}>
       {employmentMaterials && employmentMaterials.map((material, i) => {
         return <Grid item xs={3} key={material.info + i}>
           <Button>
             <a href={material.link} className='link'>
-              {material.info}
+              {material[`info${props.language === 2 ? 'En' : ''}`]}
             </a>
           </Button>
         </Grid>

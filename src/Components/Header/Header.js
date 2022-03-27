@@ -19,7 +19,7 @@ const Header = (props) => {
     { text: phrases['HEADER-FOR-ABITURIENT'], url: 'forentrant' },
     { text: phrases['HEADER-SPECIALITIES'], url: 'speciality' },
     { text: phrases['HEADER-MAIN'], url: 'home' },
-    { text: phrases['HEADER-DISCIPLINES'], url: 'disciplines' },
+    { text: phrases['HEADER-STUDY-ABROAD'], url: 'abroad' },
     { text: phrases['HEADER-WORK'], url: 'employment' },
     { text: phrases['HEADER-FAQ'], url: 'faq' },
   ]

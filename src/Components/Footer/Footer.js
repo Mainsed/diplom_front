@@ -34,9 +34,9 @@ const useStyles = makeStyles({
 });
 
 const Footer = (props) => {
-  useEffect(()=>{
+  useEffect(() => {
     setLanguage(props.language);
-  },);
+  });
 
   const classes = useStyles();
 
@@ -53,52 +53,50 @@ const Footer = (props) => {
   const phrases = props.language === 1 ? translateUkr : translateEng;
 
   return (
-    <div>
-      <Grid container justifyContent={'space-evenly'} className='mainFooterContainer'>
-        <Grid item xs={4}>
-          <Grid container justifyContent={'center'} className='containerFullHeight' direction={'column'}>
-            <Typography textAlign={'center'}>{phrases['FOOTER-ADRESS-TITLE']}</Typography>
-            <Typography textAlign={'center'}>{phrases['FOOTER-ADRESS']}</Typography>
-          </Grid>
-        </Grid>
-        <Grid item>
-          <Divider orientation='vertical' className={classes.divider} />
-        </Grid>
-        <Grid item xs={4}>
-          <Grid container justifyContent={'center'} className='containerFullHeight' direction={'column'}>
-            <Typography textAlign={'center'}>{phrases['FOOTER-EMAIL-TITLE']} {phrases['FOOTER-EMAIL']}</Typography>
-            <Typography textAlign={'center'}>{phrases['FOOTER-PHONE-TITLE']} {phrases['FOOTER-PHONE']}</Typography>
-          </Grid>
-        </Grid>
-        <Grid item>
-          <Divider orientation='vertical' className={classes.divider} />
-        </Grid>
-        <Grid item xs={3}>
-          <Grid container justifyContent={'center'} className='containerFullHeight' direction={'column'}>
-            <Typography textAlign={'center'}>{phrases['FOOTER-LANGUAGE-CHANGE']}</Typography>
-            <ThemeProvider theme={theme}>
-              <FormControl>
-                <InputLabel color={'secondary'} id="language-label" className={classes.label}>
-                  {phrases['FOOTER-LANGUAGE-TITLE']}
-                </InputLabel>
-                <Select
-                  color='secondary'
-                  labelId="language-label"
-                  label={phrases['FOOTER-LANGUAGE-TITLE']}
-                  value={language}
-                  error
-                  className={classes.select}
-                  onChange={handleLanguageChange}
-                >
-                  <MenuItem value={1}>Українська</MenuItem>
-                  <MenuItem value={2}>English</MenuItem>
-                </Select>
-              </FormControl>
-            </ThemeProvider>
-          </Grid>
+    <Grid container justifyContent={'space-evenly'} className='mainFooterContainer'>
+      <Grid item xs={4}>
+        <Grid container justifyContent={'center'} className='containerFullHeight' direction={'column'}>
+          <Typography textAlign={'center'}>{phrases['FOOTER-ADRESS-TITLE']}</Typography>
+          <Typography textAlign={'center'}>{phrases['FOOTER-ADRESS']}</Typography>
         </Grid>
       </Grid>
-    </div>
+      <Grid item>
+        <Divider orientation='vertical' className={classes.divider} />
+      </Grid>
+      <Grid item xs={4}>
+        <Grid container justifyContent={'center'} className='containerFullHeight' direction={'column'}>
+          <Typography textAlign={'center'}>{phrases['FOOTER-EMAIL-TITLE']} {phrases['FOOTER-EMAIL']}</Typography>
+          <Typography textAlign={'center'}>{phrases['FOOTER-PHONE-TITLE']} {phrases['FOOTER-PHONE']}</Typography>
+        </Grid>
+      </Grid>
+      <Grid item>
+        <Divider orientation='vertical' className={classes.divider} />
+      </Grid>
+      <Grid item xs={3}>
+        <Grid container justifyContent={'center'} className='containerFullHeight' direction={'column'}>
+          <Typography textAlign={'center'}>{phrases['FOOTER-LANGUAGE-CHANGE']}</Typography>
+          <ThemeProvider theme={theme}>
+            <FormControl>
+              <InputLabel color={'secondary'} id="language-label" className={classes.label}>
+                {phrases['FOOTER-LANGUAGE-TITLE']}
+              </InputLabel>
+              <Select
+                color='secondary'
+                labelId="language-label"
+                label={phrases['FOOTER-LANGUAGE-TITLE']}
+                value={language}
+                error
+                className={classes.select}
+                onChange={handleLanguageChange}
+              >
+                <MenuItem value={1}>Українська</MenuItem>
+                <MenuItem value={2}>English</MenuItem>
+              </Select>
+            </FormControl>
+          </ThemeProvider>
+        </Grid>
+      </Grid>
+    </Grid>
   )
 }
 

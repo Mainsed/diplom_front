@@ -6,6 +6,7 @@ import Cooperation from "../Cooperation/Cooperation";
 import EntrantContainer from "../../Containers/EntrantContainer";
 import EmploymentContainer from "../../Containers/EmploymentContainer";
 import FAQContainer from "../../Containers/FAQContainer";
+import AdminPanelContainer from "../../Containers/AdminPanelContainer";
 
 const RouteController = () => (
   <Box style={{ padding: '20px' }}>
@@ -15,6 +16,7 @@ const RouteController = () => (
       <Route exact path={'/forentrant'}element={<EntrantContainer />} />
       <Route exact path={'/employment'}element={<EmploymentContainer />} />
       <Route exact path={'/faq'}element={<FAQContainer />} />
+      <Route exact path={'/admin'}element={<AdminPanelContainer />} />
       <Route path="*" element={<Navigate to="/home" />} />
     </Routes>
   </Box>
