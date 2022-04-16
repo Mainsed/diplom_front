@@ -1,10 +1,10 @@
 import { Grid, Typography, Paper, Divider } from '@mui/material';
-import React from 'react'
-import { ReactComponent as Logo } from '../../img/logo.svg'
-import { ReactComponent as Nuzp } from '../../img/NUZP-GERB.svg'
-import './MainPage.css'
-import { translateUkr } from '../../constants.ua'
-import { translateEng } from '../../constants.eng'
+import React from 'react';
+import { ReactComponent as Logo } from '../../img/logo.svg';
+import { ReactComponent as Nuzp } from '../../img/NUZP-GERB.svg';
+import './MainPage.css';
+import { translateUkr } from '../../constants.ua';
+import { translateEng } from '../../constants.eng';
 
 const MainPage = (props) => {
   const phrases = props.language === 1 ? translateUkr : translateEng;
@@ -96,7 +96,7 @@ const MainPage = (props) => {
         </Grid>
       </Grid>
     </Grid>
-  </Paper>
-}
+  </Paper>;
+};
 
 export default MainPage;

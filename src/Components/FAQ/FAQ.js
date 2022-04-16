@@ -1,10 +1,9 @@
-import { Accordion, AccordionDetails, AccordionSummary, Button, Divider, Grid, Paper, Typography } from '@mui/material';
-import React, { useState } from 'react';
-import './FAQ.css'
+import { Accordion, AccordionDetails, AccordionSummary, Grid, Paper, Typography } from '@mui/material';
+import React from 'react';
+import './FAQ.css';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { translateUkr } from '../../constants.ua'
-import { translateEng } from '../../constants.eng'
-import { useEffect } from 'react';
+import { translateUkr } from '../../constants.ua';
+import { translateEng } from '../../constants.eng';
 
 const FAQ = (props) => {
   const phrases = props.language === 1 ? translateUkr : translateEng;
@@ -12,7 +11,7 @@ const FAQ = (props) => {
   return <Paper elevation={10} className='paper'>
     <Typography align='center' variant='h6'>{phrases['FAQ-TITLE']}</Typography>
     <Grid container>
-      {props.faqList.map((faq, i) => {
+      {props.faqList.map(faq => {
         return <Grid item xs={6} className='faqElement' key={faq.question + faq.id}>
           <Accordion>
             <AccordionSummary
@@ -26,10 +25,10 @@ const FAQ = (props) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          </Grid>
+          </Grid>;
       })}
     </Grid>
-  </Paper>
-}
+  </Paper>;
+};
 
 export default FAQ;

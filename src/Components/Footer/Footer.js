@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { createTheme, FormControl, Grid, InputLabel, MenuItem, Select, Typography, ThemeProvider, Divider } from '@mui/material'
-import './Footer.css'
-import '../../App.css'
-import { translateUkr } from '../../constants.ua'
-import { translateEng } from '../../constants.eng'
+import { createTheme, FormControl, Grid, InputLabel, MenuItem, Select, Typography, ThemeProvider, Divider } from '@mui/material';
+import './Footer.css';
+import '../../App.css';
+import { translateUkr } from '../../constants.ua';
+import { translateEng } from '../../constants.eng';
 import { makeStyles } from '@mui/styles';
 
 import Cookies from 'universal-cookie';
@@ -13,22 +13,22 @@ const theme = createTheme({
     error: { main: '#ebd9c8' },
     secondary: { main: '#ebd9c8' }
   },
-})
+});
 
 const useStyles = makeStyles({
   divider: {
     backgroundColor: '#ebd9c8',
   },
   label: {
-    color: "#ebd9c8",
-    "&.Mui-focused": {
-      color: "#ebd9c8",
+    color: '#ebd9c8',
+    '&.Mui-focused': {
+      color: '#ebd9c8',
     },
   },
   select: {
-    color: "#ebd9c8",
-    "& .MuiSvgIcon-root": {
-      color: "#ebd9c8",
+    color: '#ebd9c8',
+    '& .MuiSvgIcon-root': {
+      color: '#ebd9c8',
     },
   },
 });
@@ -41,14 +41,14 @@ const Footer = (props) => {
   const classes = useStyles();
 
   const handleLanguageChange = (event) => {
-    setLanguage(event.target.value)
+    setLanguage(event.target.value);
     props.setLanguage(event.target.value);
 
     const cookies = new Cookies();
     cookies.set('language', event.target.value, { path: '/' });
-  }
+  };
 
-  const [language, setLanguage] = useState(1)
+  const [language, setLanguage] = useState(1);
 
   const phrases = props.language === 1 ? translateUkr : translateEng;
 
@@ -97,7 +97,7 @@ const Footer = (props) => {
         </Grid>
       </Grid>
     </Grid>
-  )
-}
+  );
+};
 
 export default Footer;

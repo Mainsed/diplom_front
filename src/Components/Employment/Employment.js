@@ -1,14 +1,14 @@
-import { Button, Divider, Grid, Paper, Typography } from '@mui/material';
+import { Button, Grid, Paper, Typography } from '@mui/material';
 import React from 'react';
-import './Employment.css'
-import { translateUkr } from '../../constants.ua'
-import { translateEng } from '../../constants.eng'
+import './Employment.css';
+import { translateUkr } from '../../constants.ua';
+import { translateEng } from '../../constants.eng';
 
 const Entrant = (props) => {
   const phrases = props.language === 1 ? translateUkr : translateEng;
 
   const partnersInfo = props.partnersEmploymentInfo;
-  const employmentMaterials = props.employmentMaterials
+  const employmentMaterials = props.employmentMaterials;
 
   return <Paper elevation={10} className='paper'>
     <Typography variant='h6' align='center'>{phrases['EMPLOYMENT-PARTNERS-TITLE']}</Typography>
@@ -20,7 +20,7 @@ const Entrant = (props) => {
           </Typography>
           {partnerInfo[`headerText${props.language === 2 ? 'En' : ''}`].map(text => <Typography variant='h6' key={text + i}>{text}</Typography>)}
           {partnerInfo[`mainText${props.language === 2 ? 'En' : ''}`].map(text => <Typography key={text + i}>{text}</Typography>)}
-        </Grid>
+        </Grid>;
       })}
     </Grid>
     <Typography variant='h6' align='center'>{phrases['INTERESTING-INFO-TITLE']}</Typography>
@@ -32,10 +32,10 @@ const Entrant = (props) => {
               {material[`info${props.language === 2 ? 'En' : ''}`]}
             </a>
           </Button>
-        </Grid>
+        </Grid>;
       })}
     </Grid>
-  </Paper>
-}
+  </Paper>;
+};
 
 export default Entrant;

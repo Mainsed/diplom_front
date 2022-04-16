@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { Grid } from '@mui/material'
-import './Header.css'
+import { Grid } from '@mui/material';
+import './Header.css';
 import { NavLink } from 'react-router-dom';
-import { translateUkr } from '../../constants.ua'
-import { translateEng } from '../../constants.eng'
+import { translateUkr } from '../../constants.ua';
+import { translateEng } from '../../constants.eng';
 import Cookies from 'universal-cookie';
 
 const Header = (props) => {
@@ -11,7 +11,7 @@ const Header = (props) => {
     const cookies = new Cookies();
     const language = +cookies.get('language');
     language && props.setLanguage(language);
-  })
+  });
 
   const phrases = props.language === 1 ? translateUkr : translateEng;
 
@@ -22,7 +22,7 @@ const Header = (props) => {
     { text: phrases['HEADER-STUDY-ABROAD'], url: 'abroad' },
     { text: phrases['HEADER-WORK'], url: 'employment' },
     { text: phrases['HEADER-FAQ'], url: 'faq' },
-  ]
+  ];
   return (
     <div>
       <Grid container className='mainContainer'>
@@ -41,7 +41,7 @@ const Header = (props) => {
         )}
       </Grid>
     </div>
-  )
-}
+  );
+};
 
 export default Header;

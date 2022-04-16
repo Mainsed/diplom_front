@@ -1,8 +1,8 @@
 import { Button, Divider, Grid, Paper, Typography, TableContainer, TableRow, TableHead, Table, TableCell, TableBody, TableSortLabel } from '@mui/material';
 import React from 'react';
-import './Entrant.css'
-import { translateUkr } from '../../constants.ua'
-import { translateEng } from '../../constants.eng'
+import './Entrant.css';
+import { translateUkr } from '../../constants.ua';
+import { translateEng } from '../../constants.eng';
 
 const createData = (name, writePercent, change, writeNum, useSecondary, useNow, rate) => {
   return {
@@ -14,7 +14,7 @@ const createData = (name, writePercent, change, writeNum, useSecondary, useNow, 
     useNow,
     rate,
   };
-}
+};
 
 const Entrant = (props) => {
   const phrases = props.language === 1 ? translateUkr : translateEng;
@@ -30,13 +30,13 @@ const Entrant = (props) => {
 
   const createSortHandler = (property) => (event) => {
     handleSort(property, event);
-  }
+  };
 
-  const handleSort = (property, event) => {
-    const isAsc = orderBy === property && order === "asc";
-    setOrder(isAsc ? "desc" : "asc");
+  const handleSort = (property) => {
+    const isAsc = orderBy === property && order === 'asc';
+    setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
-  }
+  };
 
   const headCells = [
     {
@@ -70,7 +70,7 @@ const Entrant = (props) => {
   ];
 
   const proffesions = props.professionList;
-  const exams = phrases['ENTRANT-EXAM-SCHEDULE'].split(',')
+  const exams = phrases['ENTRANT-EXAM-SCHEDULE'].split(',');
   return <Paper elevation={10}>
     <Grid container justifyContent={'space-evenly'}>
       <Grid item xs={12} md={5.99} className='entrantElement'>
@@ -87,7 +87,7 @@ const Entrant = (props) => {
                 <Typography align={'center'}>
                   {exam}
                 </Typography>
-              </Grid>
+              </Grid>;
             })}
           </Grid>
           <Typography align='center'>{phrases['ENTRANT-EXAM-EXTRA-SESSION-TITLE']}</Typography>
@@ -164,13 +164,13 @@ const Entrant = (props) => {
             {rows.sort((a, b) => {
               return orderBy === 'name' ?
                 +(a[orderBy] < b[orderBy]) * (order === 'asc' ? -1 : 1) :
-                (b[orderBy] - a[orderBy]) * (order === 'asc' ? -1 : 1)
+                (b[orderBy] - a[orderBy]) * (order === 'asc' ? -1 : 1);
             }).map((row) => (
               <TableRow
                 key={row.name}
               >
                 {Object.entries(row).map(entry => {
-                  return <TableCell align='center' key={entry}>{entry[1] + (entry[0] === 'rate' ? '%' : '')}</TableCell>
+                  return <TableCell align='center' key={entry}>{entry[1] + (entry[0] === 'rate' ? '%' : '')}</TableCell>;
                 })}
               </TableRow>
             ))}
@@ -178,7 +178,7 @@ const Entrant = (props) => {
         </Table>
       </TableContainer>
     </Grid>
-  </Paper>
-}
+  </Paper>;
+};
 
 export default Entrant;

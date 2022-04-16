@@ -4,7 +4,7 @@ const initialState = {
     {
       name: 'Extrums',
       link: 'https://extrums.com/',
-      headerText: [`Ищешь место, где получить практический опыт в направлении Front-end (React.js) или Back-end (Node.js) с персональным ментором, стипендией и возможностью получить оффер по окончании стажировки?`],
+      headerText: ['Ищешь место, где получить практический опыт в направлении Front-end (React.js) или Back-end (Node.js) с персональным ментором, стипендией и возможностью получить оффер по окончании стажировки?'],
       mainText: ['Тогда компания Extrums (https://jobs.dou.ua/companies/extrums/) приглашает тебя на 3-х месячную оплачиваемую стажировку. Мы предлагаем тебе все то, что перечислено ниже и даже больше — работу над реальными кейсами.',
         'Вот что мы предлагаем нашим будущим сотрудникам 😏',
         '▪️гибкий график работы, оплачиваемый отпуск и больничный, выходные на все государственные праздники;',
@@ -15,9 +15,9 @@ const initialState = {
         '▪️денежные бонусы за присоединение к компании;',
         '▪️оплачиваемые программы стажировок.'
       ],
-      headerTextEn: [`Are you looking for a place to gain practical experience in Front-end (React.js) or Back-end (Node.js) with a personal mentor, scholarship and the opportunity to receive an offer at the end of the internship?`],
+      headerTextEn: ['Are you looking for a place to gain practical experience in Front-end (React.js) or Back-end (Node.js) with a personal mentor, scholarship and the opportunity to receive an offer at the end of the internship?'],
       mainTextEn: ['Then Extrums (https://jobs.dou.ua/companies/extrums/) invites you to a 3-month paid internship. We offer you all that is listed below and even more - work on real cases. ',
-        `Here's what we offer our future employees 😏`,
+        'Here\'s what we offer our future employees 😏',
         '▪flexible work schedule, paid leave and sick leave, weekends on all public holidays;',
         '▪ability to work remotely;',
         '▪regular corporations;',
@@ -30,24 +30,24 @@ const initialState = {
     {
       name: 'Computools',
       link: 'https://computools.com/',
-      headerText: [``],
-      mainText: [`Компания Computools предлагает студентам широкие возможности развития:`,
-        `▪️Стажировка.`,
-        `▪️Пассивная стажировка.`,
-        `▪️Практика.`,
-        `▪️Обучение английским с техническим обучением.`,
-        `Прилагаем документ, в котором вы детальнее сможете ознакомиться со всеми видами сотрудничества.`,
-        `Просим заполнить небольшую анкету, чтобы команда Computools могла с вами связаться и предложить вам наиболее подходящий вариант!`,
-        `https://docs.google.com/forms/d/e/1FAIpQLSeOGutSFnuatzJ9-GZpvlyDEKrV057t2i4q8uF4W2dMTOx-yw/viewform`],
-      headerTextEn: [``],
-      mainTextEn: [`Computools offers students a wide range of development opportunities:`,
-        `▪Internship.`,
-        `▪Passive internship.`,
-        `▪Practice.`,
-        `▪Englishing with technical training.`,
-        "We enclose a document in which you will be able to get acquainted in more detail with all types of cooperation.",
-        `Please fill out a small form so that the Computools team can contact you and offer you the best option!`,
-        `https://docs.google.com/forms/d/e/1FAIpQLSeOGutSFnuatzJ9-GZpvlyDEKrV057t2i4q8uF4W2dMTOx-yw/viewform`]
+      headerText: [''],
+      mainText: ['Компания Computools предлагает студентам широкие возможности развития:',
+        '▪️Стажировка.',
+        '▪️Пассивная стажировка.',
+        '▪️Практика.',
+        '▪️Обучение английским с техническим обучением.',
+        'Прилагаем документ, в котором вы детальнее сможете ознакомиться со всеми видами сотрудничества.',
+        'Просим заполнить небольшую анкету, чтобы команда Computools могла с вами связаться и предложить вам наиболее подходящий вариант!',
+        'https://docs.google.com/forms/d/e/1FAIpQLSeOGutSFnuatzJ9-GZpvlyDEKrV057t2i4q8uF4W2dMTOx-yw/viewform'],
+      headerTextEn: [''],
+      mainTextEn: ['Computools offers students a wide range of development opportunities:',
+        '▪Internship.',
+        '▪Passive internship.',
+        '▪Practice.',
+        '▪Englishing with technical training.',
+        'We enclose a document in which you will be able to get acquainted in more detail with all types of cooperation.',
+        'Please fill out a small form so that the Computools team can contact you and offer you the best option!',
+        'https://docs.google.com/forms/d/e/1FAIpQLSeOGutSFnuatzJ9-GZpvlyDEKrV057t2i4q8uF4W2dMTOx-yw/viewform']
     }
   ],
   employmentMaterials: [
@@ -132,13 +132,13 @@ const initialState = {
       name: 'Системний аналітик',
       nameEn: 'Systems analyst',
       requirements: [
-        "Знання персонального комп'ютера та пакетів Microsoft Office, SQL, XML та баз даних",
+        'Знання персонального комп\'ютера та пакетів Microsoft Office, SQL, XML та баз даних',
         'Організація управління проектами з розробки та впровадження',
         'Робота з Інтернет-технологіями та системами аналізу даних',
         'Знання сучасних мов програмування'
       ],
       requirementsEn: [
-        "Knowledge of personal computer and Microsoft Office, SQL, XML and databases",
+        'Knowledge of personal computer and Microsoft Office, SQL, XML and databases',
         'Organization of project management for development and implementation',
         'Working with Internet technologies and data analysis systems',
         'Knowledge of modern programming languages'
@@ -173,13 +173,13 @@ const initialState = {
       nameEn: 'Graphic designer',
       requirements: [
         'Володіння програмним забезпеченням для графічного дизайну',
-        "Відчуття стилю, креативність, образне та об'ємно-просторовемислення",
+        'Відчуття стилю, креативність, образне та об\'ємно-просторовемислення',
         'Знання основ дизайну: основи живопису і малюнка, колористики(використання кольору) і композиції та ін.',
         'Спеціальні знання в області графічного дизайну'
       ],
       requirementsEn: [
         'Possession of software for graphic design',
-        "Sense of style, creativity, figurative and three-dimensional thinking",
+        'Sense of style, creativity, figurative and three-dimensional thinking',
         'Knowledge of the basics of design: the basics of painting and drawing, color (use of color) and composition, etc.',
         'Special knowledge in the field of graphic design'
       ],
@@ -246,18 +246,18 @@ const generalReducer = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
 
 export const setLanguage = (language) => {
-  return { type: SET_LANGUAGE, data: { language } }
-}
+  return { type: SET_LANGUAGE, data: { language } };
+};
 
-export const getUserData = () => async dispatch => {
+// export const getUserData = () => async dispatch => {
   //const resp = 
   // if (resp.data.resultCode === 0) {
   //     const {id, login, email} = resp.data.data;
   //     dispatch(setUserData(id, email, login, true));
   // }
-}
+// };
 
 export default generalReducer;
