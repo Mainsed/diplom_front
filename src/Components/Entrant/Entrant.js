@@ -1,4 +1,17 @@
-import { Button, Divider, Grid, Paper, Typography, TableContainer, TableRow, TableHead, Table, TableCell, TableBody, TableSortLabel } from '@mui/material';
+import {
+  Button,
+  Divider,
+  Grid,
+  Paper,
+  Typography,
+  TableContainer,
+  TableRow,
+  TableHead,
+  Table,
+  TableCell,
+  TableBody,
+  TableSortLabel
+} from '@mui/material';
 import React from 'react';
 import './Entrant.css';
 import { translateUkr } from '../../constants.ua';
@@ -19,23 +32,27 @@ const createData = (name, writePercent, change, writeNum, useSecondary, useNow, 
 const Entrant = (props) => {
   const phrases = props.language === 1 ? translateUkr : translateEng;
 
-  const rows = props.programmingLanguages.map(lang=>createData(lang.name, lang.writeNowPerc, lang.change, lang.writeNow, lang.useSec, lang.usePrim, lang.index));
-  // [
-  //   createData('JavaScript', '18.8', '+0.17', '1601', '3385', '1089', '49.8'),
-  //   createData('C#', '14.7', '-0.02', '1252', '469', '455', '81.3'),
-  // ];
+  const rows = props.programmingLanguages.map(lang => createData(
+    lang.name,
+    lang.writeNowPerc,
+    lang.changes,
+    lang.writeNow,
+    lang.useSec,
+    lang.usePrim,
+    lang.likeIndex
+  ));
 
   const [order, setOrder] = React.useState('desc');
   const [orderBy, setOrderBy] = React.useState('name');
-
-  const createSortHandler = (property) => (event) => {
-    handleSort(property, event);
-  };
 
   const handleSort = (property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
+  };
+
+  const createSortHandler = (property) => (event) => {
+    handleSort(property, event);
   };
 
   const headCells = [
@@ -103,10 +120,15 @@ const Entrant = (props) => {
       <Grid item xs={12} md={5.99} className='entrantElement'>
         <Grid container direction={'column'} justifyContent='space-evenly' className='containerFullHeight'>
           <Typography align='center' variant='h6'>{phrases['UNIVERSITY-ENTRY-DOCUMENT-LIST-TITLE']}</Typography>
-          {phrases['UNIVERSITY-ENTRY-DOCUMENT-LIST-ARRAY'].map((item) => <Typography className='entrantListElement' key={item}>{item}</Typography>)}
+          {phrases['UNIVERSITY-ENTRY-DOCUMENT-LIST-ARRAY'].map(
+            item => <Typography className='entrantListElement' key={item}>
+              {item}
+            </Typography>)}
           <Grid container justifyContent={'space-evenly'}>
             <Button className='entrantListElement' size='large'>
-              <a href="https://pk.zp.edu.ua/pravyla-pryjomu/abituriyentam-pilgovyh-kategorij" className='link'>{phrases['UNIVERSITY-ENTRY-QUESTIONS']}</a>
+              <a href="https://pk.zp.edu.ua/pravyla-pryjomu/abituriyentam-pilgovyh-kategorij"
+                className='link'>{phrases['UNIVERSITY-ENTRY-QUESTIONS']}
+              </a>
             </Button>
             <Button className='entrantListElement' size='large'>
               <a href="https://pk.zp.edu.ua/" className='link'>{phrases['UNIVERSITY-ENTRY-BENEFITS']}</a>
@@ -170,7 +192,9 @@ const Entrant = (props) => {
                 key={row.name}
               >
                 {Object.entries(row).map(entry => {
-                  return <TableCell align='center' key={entry}>{entry[1] + (entry[0] === 'rate' ? '%' : '')}</TableCell>;
+                  return <TableCell align='center' key={entry}>
+                    {entry[1] + (entry[0] === 'rate' ? '%' : '')}
+                  </TableCell>;
                 })}
               </TableRow>
             ))}

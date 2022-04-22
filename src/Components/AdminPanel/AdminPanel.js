@@ -1,5 +1,22 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, Paper, Tab, Tabs, Typography, Grid, IconButton, Dialog, DialogTitle, DialogActions, DialogContent, Button, TextField } from '@mui/material';
-import React, { useState } from 'react';
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  Paper,
+  Tab,
+  Tabs,
+  Typography,
+  Grid,
+  IconButton,
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+  Button,
+  TextField
+} from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import './AdminPanel.css';
 import { translateUkr } from '../../constants.ua';
 import { translateEng } from '../../constants.eng';
@@ -8,6 +25,10 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const AdminPanel = (props) => {
+  useEffect(() => {
+    props.getAllData(props.setAllData);
+  }, []);
+
   const phrases = props.language === 1 ? translateUkr : translateEng;
 
   function TabPanel(props) {
@@ -25,6 +46,131 @@ const AdminPanel = (props) => {
   }
 
   const [createOpen, setCreateOpen] = React.useState(false);
+
+  const entitiesSchema = {
+    partnersEmploymentInfo: [
+      {
+        fieldName: 'name',
+        type: 'string'
+      },
+      {
+        fieldName: 'link',
+        type: 'string'
+      },
+      {
+        fieldName: 'headerText',
+        type: 'array'
+      },
+      {
+        fieldName: 'mainText',
+        type: 'array'
+      },
+      {
+        fieldName: 'headerTextEn',
+        type: 'array'
+      },
+      {
+        fieldName: 'mainTextEn',
+        type: 'array'
+      },
+    ],
+    employmentMaterials: [
+      {
+        fieldName: 'info',
+        type: 'string'
+      },
+      {
+        fieldName: 'infoEn',
+        type: 'string'
+      },
+      {
+        fieldName: 'link',
+        type: 'string'
+      },
+    ],
+    faqList: [
+      {
+        fieldName: 'question',
+        type: 'string'
+      },
+      {
+        fieldName: 'answear',
+        type: 'string'
+      },
+      {
+        fieldName: 'questionEn',
+        type: 'string'
+      },
+      {
+        fieldName: 'answearEn',
+        type: 'string'
+      },
+    ],
+    professionList: [
+      {
+        fieldName: 'name',
+        type: 'string'
+      },
+      {
+        fieldName: 'nameEn',
+        type: 'string'
+      },
+      {
+        fieldName: 'requirements',
+        type: 'array'
+      },
+      {
+        fieldName: 'requirementsEn',
+        type: 'array'
+      },
+      {
+        fieldName: 'link',
+        type: 'string'
+      },
+      {
+        fieldName: 'averagePayment',
+        type: 'string'
+      },
+      {
+        fieldName: 'maxPayment',
+        type: 'string'
+      },
+      {
+        fieldName: 'vacanciesNumber',
+        type: 'number'
+      },
+    ],
+    programmingLanguages: [
+      {
+        fieldName: 'name',
+        type: 'string'
+      },
+      {
+        fieldName: 'writeNowPerc',
+        type: 'number'
+      },
+      {
+        fieldName: 'changes',
+        type: 'number'
+      },
+      {
+        fieldName: 'writeNow',
+        type: 'number'
+      },
+      {
+        fieldName: 'useSec',
+        type: 'number'
+      },
+      {
+        fieldName: 'usePrim',
+        type: 'number'
+      },
+      {
+        fieldName: 'likeIndex',
+        type: 'number'
+      },
+    ],
+  };
 
   const fieldNameLabel = {
     name: phrases['DIALOG-NAME-FIELD'],
@@ -44,11 +190,11 @@ const AdminPanel = (props) => {
     maxPayment: phrases['DIALOG-MAX-PAYMENT-FIELD'],
     vacanciesNumber: phrases['DIALOG-VACANCIES-NUMBER-FIELD'],
     writeNowPerc: phrases['DIALOG-WRTITE-NOW-PERC-FIELD'],
-    change: phrases['DIALOG-CHANGE-FIELD'],
+    changes: phrases['DIALOG-CHANGE-FIELD'],
     writeNow: phrases['DIALOG-WRITE-NOW-FIELD'],
     useSec: phrases['DIALOG-USE-SEC-FIELD'],
     usePrim: phrases['DIALOG-USE-PRIM-FIELD'],
-    index: phrases['DIALOG-INDEX-FIELD'],
+    likeIndex: phrases['DIALOG-INDEX-FIELD'],
   };
 
   const handleCreateClickOpen = (e) => {
@@ -58,24 +204,36 @@ const AdminPanel = (props) => {
   const handleCreateClose = () => {
     setCreateOpen(null);
   };
-
+  const handleCreateSubmit = (entityName, entity, fields) => () => {
+    const createdEntity = Object.keys(entity).reduce((acc, cur) => {
+      if (fields.find(field => {
+        return field.fieldName === cur;
+      }).type === 'array')
+        acc[cur] = entity[cur].split('\n');
+      else acc[cur] = entity[cur];
+      return acc;
+    }, {});
+    props.createNewEntityThunk(createdEntity, entityName);
+    setCreateOpen(null);
+  };
   function CreateDialog(dialogProps) {
-    const [form, setForm] = useState(Object.fromEntries(dialogProps.fields.map(field=>([field, '']))));
-
+    const [form, setForm] = useState(Object.fromEntries(dialogProps.fields.map(field => ([field.fieldName, '']))));
     const handleChange = (e) => {
-      setForm({...form, [e.target.id]: e.target.value});
-    }
+      setForm({ ...form, [e.target.id]: e.target.value });
+    };
     return <Dialog open={createOpen === dialogProps.dbname} onClose={handleCreateClose} {...dialogProps}>
       <DialogTitle align='center'>Create new {dialogProps.dbname}</DialogTitle>
       <DialogContent className='adminDialogContent'>
         {dialogProps.fields.map((field, i) => {
           return <TextField
             className='adminDialogRow'
-            key={field}
+            key={field.fieldName}
             autoFocus={i === 0}
-            value={form[field]}
-            id={field}
-            label={fieldNameLabel[field]}
+            value={form[field.fieldName]}
+            id={field.fieldName}
+            multiline
+            maxRows={20}
+            label={fieldNameLabel[field.fieldName]}
             fullWidth
             variant="outlined"
             onChange={handleChange}
@@ -84,7 +242,7 @@ const AdminPanel = (props) => {
       </DialogContent>
       <DialogActions align='center'>
         <Grid container justifyContent={'space-evenly'}>
-          <Button onClick={handleCreateClose}>Subscribe</Button>
+          <Button onClick={handleCreateSubmit(dialogProps.dbname, form, dialogProps.fields)}>Create</Button>
           <Button onClick={handleCreateClose}>Cancel</Button>
         </Grid>
       </DialogActions>
@@ -181,7 +339,7 @@ const AdminPanel = (props) => {
             </Grid>
           </Grid>
         </AccordionDetails>
-        <CreateDialog fields={Object.keys(props[field.fieldName][0])} dbname={field.fieldName} />
+        <CreateDialog fields={entitiesSchema[field.fieldName]} dbname={field.fieldName} />
       </Accordion>)}
     </TabPanel>)}
   </Paper>;

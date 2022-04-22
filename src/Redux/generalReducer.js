@@ -1,3 +1,5 @@
+import { createNewEntity, getAllData } from "../Api/Api";
+
 const initialState = {
   language: 1,
   partnersEmploymentInfo: [
@@ -215,29 +217,36 @@ const initialState = {
     {
       name: 'JavaScript',
       writeNowPerc: '18.8',
-      change: '+0.17',
+      changes: '+0.17',
       writeNow: '1601',
       useSec: '3385',
       usePrim: '1089',
-      index: '49.8',
+      likeIndex: '49.8',
     },
     {
       name: 'C#',
       writeNowPerc: '14.7',
-      change: '-0.02',
+      changes: '-0.02',
       writeNow: '1252',
       useSec: '346985',
       usePrim: '455',
-      index: '81.3',
+      likeIndex: '81.3',
     }
   ]
 };
 
-const SET_LANGUAGE = 'SET_LANGUAGE';
+const SET_LANGUAGE = 'SET_LANGUAGE',
+      GET_ALL_DATA = 'GET_ALL_DATA';
 
 const generalReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_LANGUAGE: {
+      return {
+        ...state,
+        ...action.data
+      };
+    }
+    case GET_ALL_DATA: {
       return {
         ...state,
         ...action.data
@@ -252,12 +261,19 @@ export const setLanguage = (language) => {
   return { type: SET_LANGUAGE, data: { language } };
 };
 
-// export const getUserData = () => async dispatch => {
-  //const resp = 
-  // if (resp.data.resultCode === 0) {
-  //     const {id, login, email} = resp.data.data;
-  //     dispatch(setUserData(id, email, login, true));
-  // }
-// };
+export const setAllData = (data) => {
+  return { type: GET_ALL_DATA, data };
+};
+
+export const getAllDataThunk = () => async (dispatch) => {
+  const resp = await getAllData();
+  dispatch(setAllData(resp));
+}
+
+export const createNewEntityThunk = (entity, entityName) => async (dispatch) => {
+  const resp = await createNewEntity(entity, entityName);
+  console.log(resp);
+  // dispatch(setAllData(resp));
+}
 
 export default generalReducer;

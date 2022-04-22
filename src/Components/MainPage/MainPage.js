@@ -24,7 +24,10 @@ const MainPage = (props) => {
           <Typography>{phrases['ADMINISTRATION-OF-KAFEDRA']}
             <a href="https://zp.edu.ua/?q=node/664" className='link'>{phrases['HEAD-OF-THE-DEPARTMENT']}</a>
           </Typography>
-          <Typography><a href={phrases['TEACHERS-LINK']} className='link'>{phrases['TEACHERS-LINK-TITLE']}</a></Typography>
+          <Typography><a href='https://pz.zntu.net/kafedra/vikladachi/'
+            className='link'>{phrases['TEACHERS-LINK-TITLE']}
+          </a>
+          </Typography>
         </Grid>
       </Grid>
       <Grid item xs={3}>

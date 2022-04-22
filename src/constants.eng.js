@@ -3,6 +3,7 @@ export const translateEng = {
   'ADMINISTRATION': 'Leadership',
   'ADMINISTRATION-OF-KAFEDRA': 'Head of the department: ',
   'HEAD-OF-THE-DEPARTMENT': 'd.t.s., Professor Sergey Alexandrovich Subbotin',
+  'TEACHERS-LINK-TITLE': 'Teachers list',
   'DESCRIPTION-1': 'While studying at the department, students practice and learn various programming languages ​​and software design, such as C / C ++ / C #, Java, Python, PHP, PERL, JavaScript, Ruby, Matlab, R, SQL, Assembler',
   'DESCRIPTION-2': 'In addition, students will learn to use Windows, Linux, MS Office, Statistica, Mathcad, StatGraphics Plus, Adobe Photoshop, CorelDraw, IBM, WEKA, Autodesk, AutoCAD, SolidEdge, Altium Designer, PTC Creo, Atmel Studio, 1C, SVN, Git, Technology React, Vue, Angular, Node.js, ASP.net, Flutter, Laravel',
   'DESCRIPTION-3': 'There will also be an opportunity to gain skills in programming modern microcontrollers (Arduino platforms, Raspberry Pi) and developing mobile applications for Android and iOS.',

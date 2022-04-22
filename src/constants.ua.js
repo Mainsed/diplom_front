@@ -5,7 +5,6 @@ export const translateUkr = {
   'ADMINISTRATION-OF-KAFEDRA': 'Завiдувач кафедри: ',
   'HEAD-OF-THE-DEPARTMENT': 'д.т.н., професор Субботiн Сергiй Олександрович',
   'TEACHERS-LINK-TITLE': 'Перелік викладачів',
-  'TEACHERS-LINK': 'https://zp.edu.ua/vikladachi-ta-spivrobitniki-kafedri-programni-zasobi',
   'DESCRIPTION-1': 'Під час навчання на кафедрі студенти практикують та вивчають різноманітні мови програмування та проєктування програмного забеспечення, такі як C/C++/C#, Java, Python, PHP, PERL, JavaScript, Ruby, Matlab, R, SQL, Assembler',
   'DESCRIPTION-2': 'Окрім того студенти навчаться використовувати ОС Windows, Linux, програми MS Office, Statistica, Mathcad, StatGraphics Plus, Adobe Photoshop, CorelDraw, продукти IBM, WEKA, Autodesk, AutoCAD, SolidEdge, Altium Designer, PTC Creo, Atmel Studio, 1C, SVN, Git, технології React, Vue, Angular, Node.js, ASP.net, Flutter, Laravel',
   'DESCRIPTION-3': 'Також буде можливість отримати навички програмування сучасних мікроконтролерів (платформи Arduino, Raspberry Pi) та розроблення мобільних додатків для Android та iOS.',
