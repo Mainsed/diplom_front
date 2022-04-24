@@ -23,11 +23,13 @@ import { translateEng } from '../../constants.eng';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import env from 'react-dotenv';
 
 const AdminPanel = (props) => {
   useEffect(() => {
-    props.getAllData(props.setAllData);
-  }, []);
+    if (props.isAuth)
+      props.getAllData(props.setAllData);
+  }, [props.isAuth]);
 
   const phrases = props.language === 1 ? translateUkr : translateEng;
 
@@ -46,6 +48,7 @@ const AdminPanel = (props) => {
   }
 
   const [createOpen, setCreateOpen] = React.useState(false);
+  const [updateOpen, setUpdateOpen] = React.useState({ name: false, entity: {} });
 
   const entitiesSchema = {
     partnersEmploymentInfo: [
@@ -170,7 +173,7 @@ const AdminPanel = (props) => {
         type: 'number'
       },
     ],
-  };
+  };//add ids to schema, for edit/delete working
 
   const fieldNameLabel = {
     name: phrases['DIALOG-NAME-FIELD'],
@@ -201,9 +204,18 @@ const AdminPanel = (props) => {
     setCreateOpen(e.target.name);
   };
 
+  const handleUpdateClickOpen = (entity) => (e) => {
+    setUpdateOpen({ name: e.currentTarget.name, entity });
+  };
+
   const handleCreateClose = () => {
     setCreateOpen(null);
   };
+
+  const handleUpdateClose = () => {
+    setUpdateOpen({ name: false, entity: {} });
+  };
+
   const handleCreateSubmit = (entityName, entity, fields) => () => {
     const createdEntity = Object.keys(entity).reduce((acc, cur) => {
       if (fields.find(field => {
@@ -216,6 +228,21 @@ const AdminPanel = (props) => {
     props.createNewEntityThunk(createdEntity, entityName);
     setCreateOpen(null);
   };
+
+  const handleUpdateSubmit = (entityName, entity, fields) => () => {
+    const updatedEntity = Object.keys(entity).reduce((acc, cur) => {
+      if (fields.find(field => {
+        return field.fieldName === cur;
+      }).type === 'array')
+        acc[cur] = entity[cur].split('\n');
+      else acc[cur] = entity[cur];
+      return acc;
+    }, {});
+    const id = entityName === 'programmingLanguages' ? entity.name : entity.id;
+    props.updateEntityThunk(id, updatedEntity, entityName);
+    setCreateOpen(null);
+  };
+
   function CreateDialog(dialogProps) {
     const [form, setForm] = useState(Object.fromEntries(dialogProps.fields.map(field => ([field.fieldName, '']))));
     const handleChange = (e) => {
@@ -244,6 +271,42 @@ const AdminPanel = (props) => {
         <Grid container justifyContent={'space-evenly'}>
           <Button onClick={handleCreateSubmit(dialogProps.dbname, form, dialogProps.fields)}>Create</Button>
           <Button onClick={handleCreateClose}>Cancel</Button>
+        </Grid>
+      </DialogActions>
+    </Dialog>;
+  }
+
+  function UpdateDialog(dialogProps) {
+    console.log(updateOpen.entity)
+    const [form, setForm] = useState(Object.fromEntries(dialogProps.fields.map(field =>
+    ([field.fieldName, Array.isArray(updateOpen.entity[field.fieldName]) ?
+      updateOpen.entity[field.fieldName].join('\n') :
+      updateOpen.entity[field.fieldName]]))));
+    const handleChange = (e) => {
+      setForm({ ...form, [e.target.id]: e.target.value });
+    };
+    return <Dialog open={updateOpen.name === dialogProps.dbname} onClose={handleUpdateClose} {...dialogProps}>
+      <DialogTitle align='center'>Create new {dialogProps.dbname}</DialogTitle>
+      <DialogContent className='adminDialogContent'>
+        {dialogProps.fields.map((field, i) => {
+          return <TextField
+            className='adminDialogRow'
+            key={field.fieldName}
+            value={form[field.fieldName]}
+            id={field.fieldName}
+            multiline
+            maxRows={20}
+            label={fieldNameLabel[field.fieldName]}
+            fullWidth
+            variant="outlined"
+            onChange={handleChange}
+          />;
+        })}
+      </DialogContent>
+      <DialogActions align='center'>
+        <Grid container justifyContent={'space-evenly'}>
+          <Button onClick={handleUpdateSubmit(dialogProps.dbname, form, dialogProps.fields)}>Create</Button>
+          <Button onClick={handleUpdateClose}>Cancel</Button>
         </Grid>
       </DialogActions>
     </Dialog>;
@@ -306,43 +369,88 @@ const AdminPanel = (props) => {
     setValue(newValue);
   };
 
-  return <Paper elevation={10} className='paper'>
-    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-      <Tabs value={value} onChange={handleChange}>
-        {tabs.map(tab => <Tab label={tab.name} key={tab.name} />)}
-      </Tabs>
-    </Box>
-    {tabs.map((tab, i) => <TabPanel value={value} index={i} key={tab.name + i}>
-      {tab.changeableFields.map(field => <Accordion key={field.fieldName + i}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-        >
-          <Typography component={'span'}>{field.name}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Grid container justifyContent={'space-evenly'}>
-            {props[field.fieldName].map(detail => <Grid item xs={12} md={6} lg={4} className='adminElementMarginBottom' key={Object.values(detail).join('')}>
-              <Grid container justifyContent={'space-between'}>
-                <Typography component={'span'}>
-                  {detail[getNameField(field.fieldName)]}
-                </Typography>
-                <div>
-                  <IconButton size='small'><EditIcon /></IconButton>
-                  <IconButton size='small'><DeleteIcon /></IconButton>
-                </div>
-              </Grid>
-            </Grid>)}
-            <Grid item xs={12}>
-              <Grid container justifyContent={'center'}>
-                <Button onClick={handleCreateClickOpen} name={field.fieldName}>Add new</Button>
+  const [error, setError] = useState('');
+  const [auth, setAuth] = useState('');
+
+  const handleAuthChange = (event) => {
+    setAuth(event.target.value);
+  };
+
+  const validateAuth = () => {
+    const authFromEnv = env.AUTH;
+    return auth === authFromEnv;
+  };
+
+  const handleEnterAuthKey = () => {
+    const isValidated = validateAuth();
+    if (isValidated) {
+      props.setAuthSuccess();
+      return;
+    }
+    setError('Incorrect authorization code');
+  };
+
+  {
+    return props.isAuth ? <Paper elevation={10} className='paper'>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={value} onChange={handleChange}>
+          {tabs.map(tab => <Tab label={tab.name} key={tab.name} />)}
+        </Tabs>
+      </Box>
+      {tabs.map((tab, i) => <TabPanel value={value} index={i} key={tab.name + i}>
+        {tab.changeableFields.map(field => <Accordion key={field.fieldName + i}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+          >
+            <Typography component={'span'}>{field.name}</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Grid container justifyContent={'space-evenly'}>
+              {props[field.fieldName].map(detail =>
+                <Grid item xs={12} md={6} lg={4}
+                  className='adminElementMarginBottom'
+                  key={Object.values(detail).join('')}
+                >
+                  <Grid container justifyContent={'space-between'}>
+                    <Typography component={'span'}>
+                      {detail[getNameField(field.fieldName)]}
+                    </Typography>
+                    <div>
+                      <IconButton
+                        size='small'
+                        onClick={handleUpdateClickOpen(detail)}
+                        name={field.fieldName}
+                      >
+                        <EditIcon />
+                      </IconButton>
+                      <IconButton size='small'><DeleteIcon /></IconButton>
+                    </div>
+                  </Grid>
+                </Grid>)}
+              <Grid item xs={12}>
+                <Grid container justifyContent={'center'}>
+                  <Button onClick={handleCreateClickOpen} name={field.fieldName}>Add new</Button>
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
-        </AccordionDetails>
-        <CreateDialog fields={entitiesSchema[field.fieldName]} dbname={field.fieldName} />
-      </Accordion>)}
-    </TabPanel>)}
-  </Paper>;
+          </AccordionDetails>
+          <CreateDialog fields={entitiesSchema[field.fieldName]} dbname={field.fieldName} />
+          <UpdateDialog fields={entitiesSchema[field.fieldName]} dbname={field.fieldName} />
+        </Accordion>)}
+      </TabPanel>)}
+    </Paper>
+      :
+      <Paper elevation={10} className='paper'>
+        <Typography variant='h4' align='center'>Enter authorization code to get access to admin panel</Typography>
+        <TextField fullWidth onChange={handleAuthChange} />
+        <Typography align='center'><Button onClick={handleEnterAuthKey}>Confirm</Button></Typography>
+        {error !== '' ?
+          <Typography color='error' align='center'>
+            {error}
+          </Typography>
+          : ''}
+      </Paper>;
+  }
 };
 
 export default AdminPanel;

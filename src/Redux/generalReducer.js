@@ -1,4 +1,4 @@
-import { createNewEntity, getAllData } from "../Api/Api";
+import { createNewEntity, getAllData, updateEntity } from "../Api/Api";
 
 const initialState = {
   language: 1,
@@ -232,11 +232,13 @@ const initialState = {
       usePrim: '455',
       likeIndex: '81.3',
     }
-  ]
+  ],
+  isAuth: true,
 };
 
 const SET_LANGUAGE = 'SET_LANGUAGE',
-      GET_ALL_DATA = 'GET_ALL_DATA';
+      GET_ALL_DATA = 'GET_ALL_DATA',
+      SET_AUTH = 'SET_AUTH';
 
 const generalReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -252,6 +254,12 @@ const generalReducer = (state = initialState, action) => {
         ...action.data
       };
     }
+    case SET_AUTH: {
+      return {
+        ...state,
+        isAuth: true,
+      };
+    }
     default:
       return state;
   }
@@ -265,6 +273,10 @@ export const setAllData = (data) => {
   return { type: GET_ALL_DATA, data };
 };
 
+export const setAuthSuccess = () => {
+  return { type: SET_AUTH };
+};
+
 export const getAllDataThunk = () => async (dispatch) => {
   const resp = await getAllData();
   dispatch(setAllData(resp));
@@ -272,7 +284,11 @@ export const getAllDataThunk = () => async (dispatch) => {
 
 export const createNewEntityThunk = (entity, entityName) => async (dispatch) => {
   const resp = await createNewEntity(entity, entityName);
-  console.log(resp);
+  dispatch(setAllData(resp));
+}
+
+export const updateEntityThunk = (id, entity, entityName) => async (dispatch) => {
+  const resp = await updateEntity(id, entity, entityName);
   // dispatch(setAllData(resp));
 }
 

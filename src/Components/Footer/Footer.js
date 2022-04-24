@@ -54,7 +54,7 @@ const Footer = (props) => {
 
   return (
     <Grid container justifyContent={'space-evenly'} className='mainFooterContainer'>
-      <Grid item xs={4}>
+      <Grid item xs={12} md={4}>
         <Grid container justifyContent={'center'} className='containerFullHeight' direction={'column'}>
           <Typography textAlign={'center'}>{phrases['FOOTER-ADRESS-TITLE']}</Typography>
           <Typography textAlign={'center'}>{phrases['FOOTER-ADRESS']}</Typography>
@@ -63,7 +63,7 @@ const Footer = (props) => {
       <Grid item>
         <Divider orientation='vertical' className={classes.divider} />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12} md={4}>
         <Grid container justifyContent={'center'} className='containerFullHeight' direction={'column'}>
           <Typography textAlign={'center'}>{phrases['FOOTER-EMAIL-TITLE']} {phrases['FOOTER-EMAIL']}</Typography>
           <Typography textAlign={'center'}>{phrases['FOOTER-PHONE-TITLE']} {phrases['FOOTER-PHONE']}</Typography>
@@ -72,7 +72,7 @@ const Footer = (props) => {
       <Grid item>
         <Divider orientation='vertical' className={classes.divider} />
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={12} md={3}>
         <Grid container justifyContent={'center'} className='containerFullHeight' direction={'column'}>
           <Typography textAlign={'center'}>{phrases['FOOTER-LANGUAGE-CHANGE']}</Typography>
           <ThemeProvider theme={theme}>

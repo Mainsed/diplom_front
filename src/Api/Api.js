@@ -21,3 +21,16 @@ export const createNewEntity = async (entity, entityName) => {
 
   return { newEntity };
 };
+
+export const updateEntity = async (id, entity, entityName) => {
+
+  const updatedEntity = (await instance.put(`${entityName}/${id}`, entity)).data;
+
+  return { updatedEntity };
+};
+
+export const deleteEntity = async (id, entityName) => {
+  const deletedEntity = (await instance.delete(`${entityName}/${id}`)).data;
+
+  return { deletedEntity };
+};
