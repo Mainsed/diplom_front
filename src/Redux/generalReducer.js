@@ -341,7 +341,7 @@ export const updateEntityThunk = (id, entity, entityName) => async (dispatch) =>
 
 export const deleteEntityThunk = (id, entityName) => async (dispatch) => {
   const resp = await deleteEntity(id, entityName);
-  // if (resp?.modifiedCount)
+  if (resp?.modifiedCount)
     dispatch(deleteEntityData({ id, entityName }));
 };
 

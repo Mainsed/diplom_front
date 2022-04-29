@@ -28,7 +28,7 @@ export const updateEntity = async (_id, entity, entityName) => {
 };
 
 export const deleteEntity = async (id, entityName) => {
-  // const deletedEntity = (await instance.delete(`${entityName}/${id}`)).data;
+  const deletedEntity = (await instance.delete(`${entityName}/${id}`)).data;
 
-  // return deletedEntity;
+  return deletedEntity;
 };
