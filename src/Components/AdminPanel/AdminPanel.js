@@ -229,18 +229,21 @@ const AdminPanel = (props) => {
     setCreateOpen(null);
   };
 
-  const handleUpdateSubmit = (entityName, entity, fields) => () => {
+  const handleDelete = (entityName, id) => () => {
+    props.deleteEntityThunk(id, entityName);
+  };
+
+  const handleUpdateSubmit = (entityName, entity, fields, id) => () => {
     const updatedEntity = Object.keys(entity).reduce((acc, cur) => {
       if (fields.find(field => {
         return field.fieldName === cur;
       }).type === 'array')
         acc[cur] = entity[cur].split('\n');
-      else acc[cur] = entity[cur];
+      else acc[cur] = `${entity[cur]}`;
       return acc;
     }, {});
-    const id = entityName === 'programmingLanguages' ? entity.name : entity.id;
     props.updateEntityThunk(id, updatedEntity, entityName);
-    setCreateOpen(null);
+    setUpdateOpen({ name: false, entity: {} });
   };
 
   function CreateDialog(dialogProps) {
@@ -277,7 +280,6 @@ const AdminPanel = (props) => {
   }
 
   function UpdateDialog(dialogProps) {
-    console.log(updateOpen.entity)
     const [form, setForm] = useState(Object.fromEntries(dialogProps.fields.map(field =>
     ([field.fieldName, Array.isArray(updateOpen.entity[field.fieldName]) ?
       updateOpen.entity[field.fieldName].join('\n') :
@@ -305,7 +307,12 @@ const AdminPanel = (props) => {
       </DialogContent>
       <DialogActions align='center'>
         <Grid container justifyContent={'space-evenly'}>
-          <Button onClick={handleUpdateSubmit(dialogProps.dbname, form, dialogProps.fields)}>Create</Button>
+          <Button onClick={handleUpdateSubmit(
+            dialogProps.dbname,
+            form,
+            dialogProps.fields,
+            updateOpen.entity._id,
+          )}>Update</Button>
           <Button onClick={handleUpdateClose}>Cancel</Button>
         </Grid>
       </DialogActions>
@@ -423,7 +430,10 @@ const AdminPanel = (props) => {
                       >
                         <EditIcon />
                       </IconButton>
-                      <IconButton size='small'><DeleteIcon /></IconButton>
+                      <IconButton 
+                      size='small'
+                      onClick={handleDelete(field.fieldName, detail._id)}
+                      ><DeleteIcon /></IconButton>
                     </div>
                   </Grid>
                 </Grid>)}

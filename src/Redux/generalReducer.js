@@ -1,4 +1,9 @@
-import { createNewEntity, getAllData, updateEntity } from "../Api/Api";
+import {
+  createNewEntity,
+  deleteEntity,
+  getAllData,
+  updateEntity
+} from '../Api/Api';
 
 const initialState = {
   language: 1,
@@ -237,8 +242,11 @@ const initialState = {
 };
 
 const SET_LANGUAGE = 'SET_LANGUAGE',
-      GET_ALL_DATA = 'GET_ALL_DATA',
-      SET_AUTH = 'SET_AUTH';
+  GET_ALL_DATA = 'GET_ALL_DATA',
+  SET_AUTH = 'SET_AUTH',
+  SET_NEW_ENTITY_DATA = 'SET_NEW_ENTITY_DATA',
+  SET_UPDATED_ENTITY_DATA = 'SET_UPDATED_ENTITY_DATA',
+  DELETE_ENTITY_DATA = 'DELETE_ENTITY_DATA';
 
 const generalReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -252,6 +260,28 @@ const generalReducer = (state = initialState, action) => {
       return {
         ...state,
         ...action.data
+      };
+    }
+    case SET_NEW_ENTITY_DATA: {
+      return {
+        ...state,
+        [action.data.entityName]: [...state[action.data.entityName], action.data.entity]
+      };
+    }
+    case SET_UPDATED_ENTITY_DATA: {
+      return {
+        ...state,
+        [action.data.entityName]: state[action.data.entityName].map(entry => {
+          if (entry._id === action.data.entity._id)
+            entry = action.data.entity;
+          return entry;
+        })
+      };
+    }
+    case DELETE_ENTITY_DATA: {
+      return {
+        ...state,
+        [action.data.entityName]: state[action.data.entityName].filter(entry => entry._id !== action.data.id)
       };
     }
     case SET_AUTH: {
@@ -273,6 +303,18 @@ export const setAllData = (data) => {
   return { type: GET_ALL_DATA, data };
 };
 
+export const setNewEntityData = (data) => {
+  return { type: SET_NEW_ENTITY_DATA, data };
+};
+
+export const setUpdatedEntityData = (data) => {
+  return { type: SET_UPDATED_ENTITY_DATA, data };
+};
+
+export const deleteEntityData = (data) => {
+  return { type: DELETE_ENTITY_DATA, data };
+};
+
 export const setAuthSuccess = () => {
   return { type: SET_AUTH };
 };
@@ -280,16 +322,27 @@ export const setAuthSuccess = () => {
 export const getAllDataThunk = () => async (dispatch) => {
   const resp = await getAllData();
   dispatch(setAllData(resp));
-}
+};
 
 export const createNewEntityThunk = (entity, entityName) => async (dispatch) => {
   const resp = await createNewEntity(entity, entityName);
-  dispatch(setAllData(resp));
-}
+
+  dispatch(setNewEntityData({entity: resp, entityName}));
+};
 
 export const updateEntityThunk = (id, entity, entityName) => async (dispatch) => {
   const resp = await updateEntity(id, entity, entityName);
-  // dispatch(setAllData(resp));
-}
+  if (resp?.modifiedCount)
+    dispatch(setUpdatedEntityData({
+      entity: resp?.entity,
+      entityName: resp?.entityName,
+    }));
+};
+
+export const deleteEntityThunk = (id, entityName) => async (dispatch) => {
+  const resp = await deleteEntity(id, entityName);
+  // if (resp?.modifiedCount)
+    dispatch(deleteEntityData({ id, entityName }));
+};
 
 export default generalReducer;

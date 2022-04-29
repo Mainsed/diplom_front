@@ -1,7 +1,13 @@
 import { connect } from 'react-redux';
 import React, { useEffect } from 'react';
 import AdminPanel from '../Components/AdminPanel/AdminPanel';
-import { getAllDataThunk, createNewEntityThunk, setAuthSuccess, updateEntityThunk } from '../Redux/generalReducer';
+import {
+  getAllDataThunk,
+  createNewEntityThunk,
+  setAuthSuccess,
+  updateEntityThunk,
+  deleteEntityThunk
+} from '../Redux/generalReducer';
 
 const AdminPanelContainer = (props) => {
   useEffect(() => {
@@ -27,5 +33,6 @@ export default connect(mapStateToProps, {
   getAllData: getAllDataThunk,
   createNewEntityThunk,
   setAuthSuccess,
-  updateEntityThunk
+  updateEntityThunk,
+  deleteEntityThunk,
 })(AdminPanelContainer);
