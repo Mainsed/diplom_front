@@ -2,7 +2,7 @@
   color: black;
 }
 .studyProgram {
-  padding-left: 30px;
+  padding-left: 5%;
 }
 .paper {
   padding: 20px;
@@ -13,9 +13,9 @@
 .partMainPadding {
   padding: 10px !important;
 }
-.additionalContent {
-  padding: 0px 10px 10px 10px;
-}
 .partMargin{
   margin: 20px 0px !important;
+}
+.logo {
+  width: 100%;
 }

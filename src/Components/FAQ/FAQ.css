@@ -5,7 +5,9 @@
 .transitionFaqElement {
   transition: all 0.5s;
 }
-
 .faqHidden {
   display: none;
+}
+.faqPaper {
+  z-index: 1;
 }

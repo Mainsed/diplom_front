@@ -13,7 +13,7 @@ const FAQ = (props) => {
     <Grid container>
       {props.faqList.map(faq => {
         return <Grid item xs={6} className='faqElement' key={faq.question + faq.id}>
-          <Accordion>
+          <Accordion className='faqPaper'>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
             >

@@ -45,7 +45,7 @@ const initialState = {
         '▪️Обучение английским с техническим обучением.',
         'Прилагаем документ, в котором вы детальнее сможете ознакомиться со всеми видами сотрудничества.',
         'Просим заполнить небольшую анкету, чтобы команда Computools могла с вами связаться и предложить вам наиболее подходящий вариант!',
-        'https://docs.google.com/forms/d/e/1FAIpQLSeOGutSFnuatzJ9-GZpvlyDEKrV057t2i4q8uF4W2dMTOx-yw/viewform'],
+        'https://docs.google.com/forms/d/e/ 1FAIpQLSeOGutSFnuatzJ9-GZpvlyDEKrV057t2i4q8uF4W2dMTOx-yw/viewform'],
       headerTextEn: [''],
       mainTextEn: ['Computools offers students a wide range of development opportunities:',
         '▪Internship.',
@@ -54,7 +54,7 @@ const initialState = {
         '▪Englishing with technical training.',
         'We enclose a document in which you will be able to get acquainted in more detail with all types of cooperation.',
         'Please fill out a small form so that the Computools team can contact you and offer you the best option!',
-        'https://docs.google.com/forms/d/e/1FAIpQLSeOGutSFnuatzJ9-GZpvlyDEKrV057t2i4q8uF4W2dMTOx-yw/viewform']
+        'https://docs.google.com/forms/d/e/ 1FAIpQLSeOGutSFnuatzJ9-GZpvlyDEKrV057t2i4q8uF4W2dMTOx-yw/viewform']
     }
   ],
   employmentMaterials: [
