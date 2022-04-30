@@ -12,7 +12,7 @@ const FAQ = (props) => {
     <Typography align='center' variant='h6'>{phrases['FAQ-TITLE']}</Typography>
     <Grid container>
       {props.faqList.map(faq => {
-        return <Grid item xs={6} className='faqElement' key={faq.question + faq.id}>
+        return <Grid item xs={12} md={6} className='faqElement' key={faq.question + faq.id}>
           <Accordion className='faqPaper'>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
