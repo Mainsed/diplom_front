@@ -33,7 +33,6 @@
   background-color: #003f5a;
   display: block;
   animation: growDown 250ms ease-in-out;
-  position: fixed !important;
   width: 100%;
   z-index: 10;
   opacity: 0.95;
