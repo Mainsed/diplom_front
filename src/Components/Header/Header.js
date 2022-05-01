@@ -19,8 +19,8 @@ const Header = (props) => {
 
     const header = document.querySelector('.headerMobile');
 
-    const scrollUp = "scroll-up";
-    const scrollDown = "scroll-down";
+    const scrollUp = 'scroll-up';
+    const scrollDown = 'scroll-down';
     let lastScroll = 0;
 
     window.addEventListener('scroll', (e) => {
@@ -74,8 +74,8 @@ const Header = (props) => {
 
   const SideBar = props => {
     return (
-      <div>
-        <nav className={''}>
+      <div {...props}>
+        <nav>
           <Typography align={'right'}>
             <Button className={'classes.Closer'} onClick={handleMenuClick}>
               <ArrowBackIcon color='secondary' />
@@ -96,8 +96,8 @@ const Header = (props) => {
           )}
         </nav>
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <div>
@@ -116,23 +116,24 @@ const Header = (props) => {
           </Grid>
         )}
       </Grid>
-      <Grid container className='header headerMobile'>
+      <Grid container className={`header headerMobile ${showBar ? 'headerMobileHide' : ''}`}>
         <ThemeProvider theme={theme}>
-          {showBar ?
-            <SideBar />
-            :
-            <IconButton
-              size="large"
-              edge="start"
-              color="secondary"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-              onClick={handleMenuClick}
-              className='menu'
-            >
-              <MenuIcon />
-            </IconButton>
-          }
+          <IconButton
+            size="large"
+            edge="start"
+            color="secondary"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+            onClick={handleMenuClick}
+            className='menu'
+          >
+            <MenuIcon />
+          </IconButton>
+        </ThemeProvider>
+      </Grid>
+      <Grid container className={`header headerMobile ${showBar ? 'sideBar' : 'hideSideBar'}`}>
+        <ThemeProvider theme={theme}>
+          <SideBar />
         </ThemeProvider>
       </Grid>
     </div >

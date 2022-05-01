@@ -49,6 +49,7 @@ const AdminPanel = (props) => {
 
   const [createOpen, setCreateOpen] = React.useState(false);
   const [updateOpen, setUpdateOpen] = React.useState({ name: false, entity: {} });
+  const [deleteOpen, setDeleteOpen] = React.useState({ isOpen: false, id: '' });
 
   const entitiesSchema = {
     partnersEmploymentInfo: [
@@ -208,12 +209,20 @@ const AdminPanel = (props) => {
     setUpdateOpen({ name: e.currentTarget.name, entity });
   };
 
+  const handleDeleteClickOpen = (id, dbname) => () => {
+    setDeleteOpen({ openedEntity: dbname, id });
+  };
+
   const handleCreateClose = () => {
     setCreateOpen(null);
   };
 
   const handleUpdateClose = () => {
     setUpdateOpen({ name: false, entity: {} });
+  };
+
+  const handleDeleteClose = () => {
+    setDeleteOpen({ openedEntity: '', id: '' });
   };
 
   const handleCreateSubmit = (entityName, entity, fields) => () => {
@@ -229,7 +238,8 @@ const AdminPanel = (props) => {
     setCreateOpen(null);
   };
 
-  const handleDelete = (entityName, id) => () => {
+  const handleDeleteConfirm = (entityName, id) => () => {
+    handleDeleteClose();
     props.deleteEntityThunk(id, entityName);
   };
 
@@ -319,6 +329,23 @@ const AdminPanel = (props) => {
     </Dialog>;
   }
 
+  function DeleteDialog(dialogProps) {
+    return <Dialog open={deleteOpen.openedEntity === dialogProps.dbname} onClose={handleDeleteClose}>
+      <DialogTitle align='center'>Are you sure you want to delete ?</DialogTitle>
+      <DialogActions align='center'>
+        <Grid container justifyContent={'space-evenly'}>
+          <Button 
+          onClick={handleDeleteConfirm(
+            dialogProps.dbname,
+            deleteOpen.id,
+          )}
+          >Delete</Button>
+          <Button onClick={handleDeleteClose}>Cancel</Button>
+        </Grid>
+      </DialogActions>
+    </Dialog>;
+  }
+
   const [value, setValue] = React.useState(0);
 
   const tabs = [
@@ -400,7 +427,13 @@ const AdminPanel = (props) => {
   {
     return props.isAuth ? <Paper elevation={10} className='paper'>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange}>
+        <Tabs 
+        value={value}
+        onChange={handleChange}
+        variant="scrollable"
+        scrollButtons
+        allowScrollButtonsMobile
+        >
           {tabs.map(tab => <Tab label={tab.name} key={tab.name} />)}
         </Tabs>
       </Box>
@@ -432,7 +465,7 @@ const AdminPanel = (props) => {
                       </IconButton>
                       <IconButton 
                       size='small'
-                      onClick={handleDelete(field.fieldName, detail._id)}
+                      onClick={handleDeleteClickOpen(detail._id, field.fieldName)}
                       ><DeleteIcon /></IconButton>
                     </div>
                   </Grid>
@@ -446,6 +479,7 @@ const AdminPanel = (props) => {
           </AccordionDetails>
           <CreateDialog fields={entitiesSchema[field.fieldName]} dbname={field.fieldName} />
           <UpdateDialog fields={entitiesSchema[field.fieldName]} dbname={field.fieldName} />
+          <DeleteDialog dbname={field.fieldName}/>
         </Accordion>)}
       </TabPanel>)}
     </Paper>

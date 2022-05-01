@@ -32,10 +32,23 @@
   transition: all 0.4s;
   background-color: #003f5a;
   display: block;
-  animation: growDown 250ms ease-in-out;
   width: 100%;
   z-index: 10;
   opacity: 0.95;
+}
+
+.headerMobileHide {
+  visibility: hidden;
+}
+
+.sideBar {
+  animation: growDown 250ms;
+}
+
+.hideSideBar {
+  animation: growUp 250ms;
+  transition: all 0.4s;
+  transform: translate3d(0, -100%, 0);
 }
 
 .menu {
@@ -48,11 +61,11 @@
 }
 
 .scroll-down {
-  transform: translate3d(0, -100%, 0);
+  transform: translate3d(0%, -100%, 0);
 }
 
 .scroll-up {
-  transform: none;
+  transform: translate3d(0%, 0%, 0);
 }
 
 
@@ -99,5 +112,42 @@
   }
   100% {
     transform: translate3d(0, 0%, 0);
+  }
+}
+
+
+@keyframes growUp {
+  0% {
+    transform: translate3d(0, 0%, 0);
+  }
+  10% {
+    transform: translate3d(0, -10%, 0);
+  }
+  20% {
+    transform: translate3d(0, -20%, 0);
+  }
+  30% {
+    transform: translate3d(0, -30%, 0);
+  }
+  40% {
+    transform: translate3d(0, -40%, 0);
+  }
+  50% {
+    transform: translate3d(0, -50%, 0);
+  }
+  60% {
+    transform: translate3d(0, -60%, 0);
+  }
+  70% {
+    transform: translate3d(0, -70%, 0);
+  }
+  80% {
+    transform: translate3d(0, -80%, 0);
+  }
+  90% {
+    transform: translate3d(0, -90%, 0);
+  }
+  100% {
+    transform: translate3d(0, -100%, 0);
   }
 }
