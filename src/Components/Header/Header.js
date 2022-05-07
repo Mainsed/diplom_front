@@ -55,9 +55,9 @@ const Header = (props) => {
 
   const headers = [
     { text: phrases['HEADER-FOR-ABITURIENT'], url: 'forentrant' },
-    { text: phrases['HEADER-SPECIALITIES'], url: 'speciality' },
+    // { text: phrases['HEADER-SPECIALITIES'], url: 'speciality' },
     { text: phrases['HEADER-MAIN'], url: 'home' },
-    { text: phrases['HEADER-STUDY-ABROAD'], url: 'abroad' },
+    // { text: phrases['HEADER-STUDY-ABROAD'], url: 'abroad' },
     { text: phrases['HEADER-WORK'], url: 'employment' },
     { text: phrases['HEADER-FAQ'], url: 'faq' },
   ];
@@ -103,7 +103,7 @@ const Header = (props) => {
     <div>
       <Grid container className='header'>
         {headers.map(title =>
-          <Grid item xs={2} key={title.url} className='title'>
+          <Grid item xs={3} key={title.url} className='title'>
             <Grid container justifyItems={'center'} style={{ height: '100%' }}>
               <NavLink to={title.url}
                 className={({ isActive }) =>

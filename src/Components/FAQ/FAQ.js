@@ -9,7 +9,7 @@ const FAQ = (props) => {
   const phrases = props.language === 1 ? translateUkr : translateEng;
 
   return <Paper elevation={10} className='paper'>
-    <Typography align='center' variant='h6'>{phrases['FAQ-TITLE']}</Typography>
+    <Typography align='center' variant='h5'>{phrases['FAQ-TITLE']}</Typography>
     <Grid container>
       {props.faqList.map(faq => {
         return <Grid item xs={12} md={6} className='faqElement' key={faq.question + faq.id}>

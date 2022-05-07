@@ -174,7 +174,7 @@ const AdminPanel = (props) => {
         type: 'number'
       },
     ],
-  };//add ids to schema, for edit/delete working
+  };
 
   const fieldNameLabel = {
     name: phrases['DIALOG-NAME-FIELD'],
@@ -262,7 +262,7 @@ const AdminPanel = (props) => {
       setForm({ ...form, [e.target.id]: e.target.value });
     };
     return <Dialog open={createOpen === dialogProps.dbname} onClose={handleCreateClose} {...dialogProps}>
-      <DialogTitle align='center'>Create new {dialogProps.dbname}</DialogTitle>
+      <DialogTitle align='center'>{phrases['ADMIN-CREATE-NEW']} {dialogProps.dbname}</DialogTitle>
       <DialogContent className='adminDialogContent'>
         {dialogProps.fields.map((field, i) => {
           return <TextField
@@ -282,8 +282,8 @@ const AdminPanel = (props) => {
       </DialogContent>
       <DialogActions align='center'>
         <Grid container justifyContent={'space-evenly'}>
-          <Button onClick={handleCreateSubmit(dialogProps.dbname, form, dialogProps.fields)}>Create</Button>
-          <Button onClick={handleCreateClose}>Cancel</Button>
+          <Button onClick={handleCreateSubmit(dialogProps.dbname, form, dialogProps.fields)}>{phrases['ADMIN-CREATE-CONFIRM']}</Button>
+          <Button onClick={handleCreateClose}>{phrases['ADMIN-CREATE-CANCEL']}</Button>
         </Grid>
       </DialogActions>
     </Dialog>;
@@ -298,7 +298,7 @@ const AdminPanel = (props) => {
       setForm({ ...form, [e.target.id]: e.target.value });
     };
     return <Dialog open={updateOpen.name === dialogProps.dbname} onClose={handleUpdateClose} {...dialogProps}>
-      <DialogTitle align='center'>Create new {dialogProps.dbname}</DialogTitle>
+      <DialogTitle align='center'>{phrases['ADMIN-UPDATE']} {dialogProps.dbname}</DialogTitle>
       <DialogContent className='adminDialogContent'>
         {dialogProps.fields.map((field, i) => {
           return <TextField
@@ -322,8 +322,8 @@ const AdminPanel = (props) => {
             form,
             dialogProps.fields,
             updateOpen.entity._id,
-          )}>Update</Button>
-          <Button onClick={handleUpdateClose}>Cancel</Button>
+          )}>{phrases['ADMIN-UPDATE-CONFIRM']}</Button>
+          <Button onClick={handleUpdateClose}>{phrases['ADMIN-UPDATE-CANCEL']}</Button>
         </Grid>
       </DialogActions>
     </Dialog>;
@@ -331,16 +331,16 @@ const AdminPanel = (props) => {
 
   function DeleteDialog(dialogProps) {
     return <Dialog open={deleteOpen.openedEntity === dialogProps.dbname} onClose={handleDeleteClose}>
-      <DialogTitle align='center'>Are you sure you want to delete ?</DialogTitle>
+      <DialogTitle align='center'>{phrases['ADMIN-DELETE-CONFIRM-TITLE']}</DialogTitle>
       <DialogActions align='center'>
         <Grid container justifyContent={'space-evenly'}>
-          <Button 
-          onClick={handleDeleteConfirm(
-            dialogProps.dbname,
-            deleteOpen.id,
-          )}
-          >Delete</Button>
-          <Button onClick={handleDeleteClose}>Cancel</Button>
+          <Button
+            onClick={handleDeleteConfirm(
+              dialogProps.dbname,
+              deleteOpen.id,
+            )}
+          >{phrases['ADMIN-DELETE-CONFIRM']}</Button>
+          <Button onClick={handleDeleteClose}>{phrases['ADMIN-DELETE-CANCEL']}</Button>
         </Grid>
       </DialogActions>
     </Dialog>;
@@ -427,12 +427,12 @@ const AdminPanel = (props) => {
   {
     return props.isAuth ? <Paper elevation={10} className='paper'>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs 
-        value={value}
-        onChange={handleChange}
-        variant="scrollable"
-        scrollButtons
-        allowScrollButtonsMobile
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          variant="scrollable"
+          scrollButtons
+          allowScrollButtonsMobile
         >
           {tabs.map(tab => <Tab label={tab.name} key={tab.name} />)}
         </Tabs>
@@ -451,10 +451,12 @@ const AdminPanel = (props) => {
                   className='adminElementMarginBottom'
                   key={Object.values(detail).join('')}
                 >
-                  <Grid container justifyContent={'space-between'}>
-                    <Typography component={'span'}>
-                      {detail[getNameField(field.fieldName)]}
-                    </Typography>
+                  <Grid container justifyContent={'space-evenly'}>
+                    <Grid item xs={12} sm={9}>
+                      <Typography component={'span'}>
+                        {detail[getNameField(field.fieldName)]}
+                      </Typography>
+                    </Grid>
                     <div>
                       <IconButton
                         size='small'
@@ -463,31 +465,33 @@ const AdminPanel = (props) => {
                       >
                         <EditIcon />
                       </IconButton>
-                      <IconButton 
-                      size='small'
-                      onClick={handleDeleteClickOpen(detail._id, field.fieldName)}
+                      <IconButton
+                        size='small'
+                        onClick={handleDeleteClickOpen(detail._id, field.fieldName)}
                       ><DeleteIcon /></IconButton>
                     </div>
                   </Grid>
                 </Grid>)}
               <Grid item xs={12}>
                 <Grid container justifyContent={'center'}>
-                  <Button onClick={handleCreateClickOpen} name={field.fieldName}>Add new</Button>
+                  <Button onClick={handleCreateClickOpen} name={field.fieldName}>
+                    {phrases['ADMIN-CREATE-BUTTON-TEXT']}
+                  </Button>
                 </Grid>
               </Grid>
             </Grid>
           </AccordionDetails>
           <CreateDialog fields={entitiesSchema[field.fieldName]} dbname={field.fieldName} />
           <UpdateDialog fields={entitiesSchema[field.fieldName]} dbname={field.fieldName} />
-          <DeleteDialog dbname={field.fieldName}/>
+          <DeleteDialog dbname={field.fieldName} />
         </Accordion>)}
       </TabPanel>)}
     </Paper>
       :
       <Paper elevation={10} className='paper'>
-        <Typography variant='h4' align='center'>Enter authorization code to get access to admin panel</Typography>
+        <Typography variant='h4' align='center'>{phrases['ADMIN-AUTH-TITLE']}</Typography>
         <TextField fullWidth onChange={handleAuthChange} />
-        <Typography align='center'><Button onClick={handleEnterAuthKey}>Confirm</Button></Typography>
+        <Typography align='center'><Button onClick={handleEnterAuthKey}>{phrases['ADMIN-AUTH-CONFIRM']}</Button></Typography>
         {error !== '' ?
           <Typography color='error' align='center'>
             {error}

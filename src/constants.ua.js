@@ -94,4 +94,16 @@ export const translateUkr = {
   'DIALOG-USE-SEC-FIELD': 'Використовують як другу',
   'DIALOG-USE-PRIM-FIELD': 'Використовуют як основну',
   'DIALOG-INDEX-FIELD': 'Індекс оцінки',
+  'ADMIN-CREATE-NEW': 'Створити новий об\'єкт',
+  'ADMIN-CREATE-CONFIRM': 'Створити',
+  'ADMIN-CREATE-CANCEL': 'Скасувати',
+  'ADMIN-UPDATE': 'Оновити об\'єкт',
+  'ADMIN-UPDATE-CONFIRM': 'Оновити',
+  'ADMIN-UPDATE-CANCEL': 'Скасувати',
+  'ADMIN-DELETE-CONFIRM-TITLE': 'Ви впевнені, що хочете видалити ?',
+  'ADMIN-DELETE-CONFIRM': 'Видалити',
+  'ADMIN-DELETE-CANCEL': 'Скасувати',
+  'ADMIN-AUTH-TITLE': 'Введіть авторизаційний ключ для доступу до панелі адміністратора',
+  'ADMIN-AUTH-CONFIRM': 'Підтвердити',
+  'ADMIN-CREATE-BUTTON-TEXT': 'Створити'
 };

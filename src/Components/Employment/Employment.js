@@ -18,7 +18,7 @@ const Entrant = (props) => {
   ];
 
   return <Paper elevation={10} className='paper'>
-    <Typography variant='h6' align='center'>{phrases['EMPLOYMENT-PARTNERS-TITLE']}</Typography>
+    <Typography variant='h5' align='center'>{phrases['EMPLOYMENT-PARTNERS-TITLE']}</Typography>
     <Grid container className='partMargin'>
       {partnersInfo && partnersInfo.map((partnerInfo, i) => {
         return <Grid item xs={12} md={6} className='employmentElement' key={partnerInfo.name + i}>

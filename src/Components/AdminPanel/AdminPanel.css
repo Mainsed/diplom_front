@@ -1,6 +1,10 @@
 .adminElementMarginBottom {
   padding: 5px 10px;
 }
+.adminBox {
+  padding-left: 0px;
+  padding-right: 0px;
+}
 .adminDialogContent {
   padding: 15px !important;
 }
