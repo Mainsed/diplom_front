@@ -76,6 +76,8 @@ export const translateUkr = {
   'DIALOG-LINK-FIELD': 'Посилання',
   'DIALOG-HEADER-TEXT-FIELD': 'Заголовок',
   'DIALOG-MAIN-TEXT-FIELD': 'Основний текст',
+  'DIALOG-HEADER-TEXT-EN-FIELD': 'Заголовок англійською',
+  'DIALOG-MAIN-TEXT-EN-FIELD': 'Основний текст англійською',
   'DIALOG-INFO-FIELD': 'Информація',
   'DIALOG-INFO-EN-FIELD': 'Інформація англійською',
   'DIALOG-QUESTION-FIELD': 'Запитання',
@@ -105,5 +107,9 @@ export const translateUkr = {
   'ADMIN-DELETE-CANCEL': 'Скасувати',
   'ADMIN-AUTH-TITLE': 'Введіть авторизаційний ключ для доступу до панелі адміністратора',
   'ADMIN-AUTH-CONFIRM': 'Підтвердити',
-  'ADMIN-CREATE-BUTTON-TEXT': 'Створити'
+  'ADMIN-CREATE-BUTTON-TEXT': 'Створити',
+  'ADMIN-ERROR-REQUIRED': 'Це поле є обов\'язковим',
+  'ADMIN-ERROR-MIN-FIELD-LENGTH': (value) => `Мінімальна довжина поля - ${value} символи(ів)`,
+  'ADMIN-ERROR-MIN-FIELD-VALUE': (value) => `Мінімальне значення поля - ${value}`,
+  'ADMIN-ERROR-MAX-FIELD-VALUE': (value) => `Максимальне значення поля - ${value}`,
 };

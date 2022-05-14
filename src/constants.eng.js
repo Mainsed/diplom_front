@@ -75,6 +75,8 @@ export const translateEng = {
   'DIALOG-LINK-FIELD': 'Link',
   'DIALOG-HEADER-TEXT-FIELD': 'Header text',
   'DIALOG-MAIN-TEXT-FIELD': 'Main text',
+  'DIALOG-HEADER-TEXT-EN-FIELD': 'Header text on english',
+  'DIALOG-MAIN-TEXT-EN-FIELD': 'Main text on english',
   'DIALOG-INFO-FIELD': 'Information',
   'DIALOG-INFO-EN-FIELD': 'Information on english',
   'DIALOG-QUESTION-FIELD': 'Question',
@@ -104,5 +106,9 @@ export const translateEng = {
   'ADMIN-DELETE-CANCEL': 'Cancel',
   'ADMIN-AUTH-TITLE': 'Please enter the authorisation code to get access to admin panel',
   'ADMIN-AUTH-CONFIRM': 'Confirm',
-  'ADMIN-CREATE-BUTTON-TEXT': 'Create'
+  'ADMIN-CREATE-BUTTON-TEXT': 'Create',
+  'ADMIN-ERROR-REQUIRED': 'This field is required',
+  'ADMIN-ERROR-MIN-FIELD-LENGTH': (value) => `Min field length - ${value} symbols`,
+  'ADMIN-ERROR-MIN-FIELD-VALUE': (value) => `Min field value - ${value}`,
+  'ADMIN-ERROR-MAX-FIELD-VALUE': (value) => `Max field value - ${value}`,
 };

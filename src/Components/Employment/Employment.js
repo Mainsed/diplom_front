@@ -3,7 +3,6 @@ import React from 'react';
 import './Employment.css';
 import { translateUkr } from '../../constants.ua';
 import { translateEng } from '../../constants.eng';
-import YouTube from 'react-youtube';
 
 const Entrant = (props) => {
   const phrases = props.language === 1 ? translateUkr : translateEng;

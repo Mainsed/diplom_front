@@ -24,6 +24,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import env from 'react-dotenv';
+import { ValidatorForm } from 'react-material-ui-form-validator';
+import { TextValidator } from 'react-material-ui-form-validator';
 
 const AdminPanel = (props) => {
   useEffect(() => {
@@ -55,123 +57,219 @@ const AdminPanel = (props) => {
     partnersEmploymentInfo: [
       {
         fieldName: 'name',
-        type: 'string'
+        type: 'string',
+        validationOnCreate: ['required', 'minStringLength:2'],
+        validationOnUpdate: ['minStringLength:2'],
+        errorsOnCreate: [phrases['ADMIN-ERROR-REQUIRED'], phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)]
       },
       {
         fieldName: 'link',
-        type: 'string'
+        type: 'string',
+        validationOnCreate: ['required', 'minStringLength:2'],
+        validationOnUpdate: ['minStringLength:2'],
+        errorsOnCreate: [phrases['ADMIN-ERROR-REQUIRED'], phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)]
       },
       {
         fieldName: 'headerText',
-        type: 'array'
+        type: 'array',
+        validationOnCreate: ['required', 'minStringLength:2'],
+        validationOnUpdate: ['minStringLength:2'],
+        errorsOnCreate: [phrases['ADMIN-ERROR-REQUIRED'], phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)]
       },
       {
         fieldName: 'mainText',
-        type: 'array'
+        type: 'array',
+        validationOnCreate: ['required', 'minStringLength:2'],
+        validationOnUpdate: ['minStringLength:2'],
+        errorsOnCreate: [phrases['ADMIN-ERROR-REQUIRED'], phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)]
       },
       {
         fieldName: 'headerTextEn',
-        type: 'array'
+        type: 'array',
       },
       {
         fieldName: 'mainTextEn',
-        type: 'array'
+        type: 'array',
       },
     ],
     employmentMaterials: [
       {
         fieldName: 'info',
-        type: 'string'
+        type: 'string',
+        validationOnCreate: ['required', 'minStringLength:2'],
+        validationOnUpdate: ['minStringLength:2'],
+        errorsOnCreate: [phrases['ADMIN-ERROR-REQUIRED'], phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)]
       },
       {
         fieldName: 'infoEn',
-        type: 'string'
+        type: 'string',
       },
       {
         fieldName: 'link',
-        type: 'string'
+        type: 'string',
+        validationOnCreate: ['required', 'minStringLength:2'],
+        validationOnUpdate: ['minStringLength:2'],
+        errorsOnCreate: [phrases['ADMIN-ERROR-REQUIRED'], phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)]
       },
     ],
     faqList: [
       {
         fieldName: 'question',
-        type: 'string'
+        type: 'string',
+        validationOnCreate: ['required', 'minStringLength:2'],
+        validationOnUpdate: ['minStringLength:2'],
+        errorsOnCreate: [phrases['ADMIN-ERROR-REQUIRED'], phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)]
       },
       {
         fieldName: 'answear',
-        type: 'string'
+        type: 'string',
+        validationOnCreate: ['required', 'minStringLength:2'],
+        validationOnUpdate: ['minStringLength:2'],
+        errorsOnCreate: [phrases['ADMIN-ERROR-REQUIRED'], phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)]
       },
       {
         fieldName: 'questionEn',
-        type: 'string'
+        type: 'string',
       },
       {
         fieldName: 'answearEn',
-        type: 'string'
+        type: 'string',
       },
     ],
     professionList: [
       {
         fieldName: 'name',
-        type: 'string'
+        type: 'string',
+        validationOnCreate: ['required', 'minStringLength:2'],
+        validationOnUpdate: ['minStringLength:2'],
+        errorsOnCreate: [phrases['ADMIN-ERROR-REQUIRED'], phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)]
       },
       {
         fieldName: 'nameEn',
-        type: 'string'
+        type: 'string',
       },
       {
         fieldName: 'requirements',
-        type: 'array'
+        type: 'array',
+        validationOnCreate: ['required', 'minStringLength:2'],
+        validationOnUpdate: ['minStringLength:2'],
+        errorsOnCreate: [phrases['ADMIN-ERROR-REQUIRED'], phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)]
       },
       {
         fieldName: 'requirementsEn',
-        type: 'array'
+        type: 'array',
       },
       {
         fieldName: 'link',
-        type: 'string'
+        type: 'string',
+        validationOnCreate: ['required', 'minStringLength:2'],
+        validationOnUpdate: ['minStringLength:2'],
+        errorsOnCreate: [phrases['ADMIN-ERROR-REQUIRED'], phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)]
       },
       {
         fieldName: 'averagePayment',
-        type: 'string'
+        type: 'string',
+        validationOnCreate: ['required', 'minStringLength:2'],
+        validationOnUpdate: ['minStringLength:2'],
+        errorsOnCreate: [phrases['ADMIN-ERROR-REQUIRED'], phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)]
       },
       {
         fieldName: 'maxPayment',
-        type: 'string'
+        type: 'string',
+        validationOnCreate: ['required', 'minStringLength:2'],
+        validationOnUpdate: ['minStringLength:2'],
+        errorsOnCreate: [phrases['ADMIN-ERROR-REQUIRED'], phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)]
       },
       {
         fieldName: 'vacanciesNumber',
-        type: 'number'
+        type: 'number',
+        validationOnCreate: ['required', 'minNumber:0'],
+        validationOnUpdate: ['minNumber:0'],
+        errorsOnCreate: [phrases['ADMIN-ERROR-REQUIRED'], phrases['ADMIN-ERROR-MIN-FIELD-VALUE'](0)],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-VALUE'](0)]
       },
     ],
     programmingLanguages: [
       {
         fieldName: 'name',
-        type: 'string'
+        type: 'string',
+        validationOnCreate: ['required', 'minStringLength:2'],
+        validationOnUpdate: ['minStringLength:2'],
+        errorsOnCreate: [phrases['ADMIN-ERROR-REQUIRED'], phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-LENGTH'](2)]
       },
       {
         fieldName: 'writeNowPerc',
-        type: 'number'
+        type: 'number',
+        validationOnCreate: ['required', 'minNumber:0', 'maxNumber:100'],
+        validationOnUpdate: ['minNumber:0', 'maxNumber:100'],
+        errorsOnCreate: [
+          phrases['ADMIN-ERROR-REQUIRED'],
+          phrases['ADMIN-ERROR-MIN-FIELD-VALUE'](0),
+          phrases['ADMIN-ERROR-MAX-FIELD-VALUE'](100)
+        ],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-VALUE'](0), phrases['ADMIN-ERROR-MAX-FIELD-VALUE'](100)]
       },
       {
         fieldName: 'changes',
-        type: 'number'
+        type: 'number',
+        validationOnCreate: ['required', 'minNumber:0', 'maxNumber:100'],
+        validationOnUpdate: ['minNumber:0', 'maxNumber:100'],
+        errorsOnCreate: [
+          phrases['ADMIN-ERROR-REQUIRED'],
+          phrases['ADMIN-ERROR-MIN-FIELD-VALUE'](0),
+          phrases['ADMIN-ERROR-MAX-FIELD-VALUE'](100)
+        ],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-VALUE'](0), phrases['ADMIN-ERROR-MAX-FIELD-VALUE'](100)]
       },
       {
         fieldName: 'writeNow',
-        type: 'number'
+        type: 'number',
+        validationOnCreate: ['required', 'minNumber:0'],
+        validationOnUpdate: ['minNumber:0'],
+        errorsOnCreate: [phrases['ADMIN-ERROR-REQUIRED'], phrases['ADMIN-ERROR-MIN-FIELD-VALUE'](0)],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-VALUE'](0)]
       },
       {
         fieldName: 'useSec',
-        type: 'number'
+        type: 'number',
+        validationOnCreate: ['required', 'minNumber:0'],
+        validationOnUpdate: ['minNumber:0'],
+        errorsOnCreate: [phrases['ADMIN-ERROR-REQUIRED'], phrases['ADMIN-ERROR-MIN-FIELD-VALUE'](0)],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-VALUE'](0)]
       },
       {
         fieldName: 'usePrim',
-        type: 'number'
+        type: 'number',
+        validationOnCreate: ['required', 'minNumber:0'],
+        validationOnUpdate: ['minNumber:0'],
+        errorsOnCreate: [phrases['ADMIN-ERROR-REQUIRED'], phrases['ADMIN-ERROR-MIN-FIELD-VALUE'](0)],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-VALUE'](0)]
       },
       {
         fieldName: 'likeIndex',
-        type: 'number'
+        type: 'number',
+        validationOnCreate: ['required', 'minNumber:0', 'maxNumber:100'],
+        validationOnUpdate: ['minNumber:0', 'maxNumber:100'],
+        errorsOnCreate: [
+          phrases['ADMIN-ERROR-REQUIRED'],
+          phrases['ADMIN-ERROR-MIN-FIELD-VALUE'](0),
+          phrases['ADMIN-ERROR-MAX-FIELD-VALUE'](100)
+        ],
+        errorsOnUpdate: [phrases['ADMIN-ERROR-MIN-FIELD-VALUE'](0), phrases['ADMIN-ERROR-MAX-FIELD-VALUE'](100)]
       },
     ],
   };
@@ -181,6 +279,8 @@ const AdminPanel = (props) => {
     link: phrases['DIALOG-LINK-FIELD'],
     headerText: phrases['DIALOG-HEADER-TEXT-FIELD'],
     mainText: phrases['DIALOG-MAIN-TEXT-FIELD'],
+    headerTextEn: phrases['DIALOG-HEADER-TEXT-EN-FIELD'],
+    mainTextEn: phrases['DIALOG-MAIN-TEXT-EN-FIELD'],
     info: phrases['DIALOG-INFO-FIELD'],
     infoEn: phrases['DIALOG-INFO-EN-FIELD'],
     question: phrases['DIALOG-QUESTION-FIELD'],
@@ -262,30 +362,40 @@ const AdminPanel = (props) => {
       setForm({ ...form, [e.target.id]: e.target.value });
     };
     return <Dialog open={createOpen === dialogProps.dbname} onClose={handleCreateClose} {...dialogProps}>
-      <DialogTitle align='center'>{phrases['ADMIN-CREATE-NEW']} {dialogProps.dbname}</DialogTitle>
-      <DialogContent className='adminDialogContent'>
-        {dialogProps.fields.map((field, i) => {
-          return <TextField
-            className='adminDialogRow'
-            key={field.fieldName}
-            autoFocus={i === 0}
-            value={form[field.fieldName]}
-            id={field.fieldName}
-            multiline
-            maxRows={20}
-            label={fieldNameLabel[field.fieldName]}
-            fullWidth
-            variant="outlined"
-            onChange={handleChange}
-          />;
-        })}
-      </DialogContent>
-      <DialogActions align='center'>
-        <Grid container justifyContent={'space-evenly'}>
-          <Button onClick={handleCreateSubmit(dialogProps.dbname, form, dialogProps.fields)}>{phrases['ADMIN-CREATE-CONFIRM']}</Button>
-          <Button onClick={handleCreateClose}>{phrases['ADMIN-CREATE-CANCEL']}</Button>
-        </Grid>
-      </DialogActions>
+      <ValidatorForm
+        onSubmit={handleCreateSubmit(dialogProps.dbname, form, dialogProps.fields)}
+        className='validatorForm'
+      >
+        <DialogTitle align='center'>{phrases['ADMIN-CREATE-NEW']} {dialogProps.dbname}</DialogTitle>
+        <DialogContent className='adminDialogContent'>
+          {dialogProps.fields.map((field, i) => {
+            return <TextValidator
+              className='adminDialogRow'
+              key={field.fieldName}
+              autoFocus={i === 0}
+              value={form[field.fieldName]}
+              id={field.fieldName}
+              validators={field.validationOnCreate}
+              errorMessages={field.errorsOnCreate}
+              multiline
+              maxRows={20}
+              label={fieldNameLabel[field.fieldName]}
+              fullWidth
+              variant="outlined"
+              onChange={handleChange}
+            />;
+          })}
+
+        </DialogContent>
+        <DialogActions align='center'>
+          <Grid container justifyContent={'space-evenly'}>
+            <Button type='submit'>
+              {phrases['ADMIN-CREATE-CONFIRM']}
+            </Button>
+            <Button onClick={handleCreateClose}>{phrases['ADMIN-CREATE-CANCEL']}</Button>
+          </Grid>
+        </DialogActions>
+      </ValidatorForm>
     </Dialog>;
   }
 
@@ -298,34 +408,36 @@ const AdminPanel = (props) => {
       setForm({ ...form, [e.target.id]: e.target.value });
     };
     return <Dialog open={updateOpen.name === dialogProps.dbname} onClose={handleUpdateClose} {...dialogProps}>
-      <DialogTitle align='center'>{phrases['ADMIN-UPDATE']} {dialogProps.dbname}</DialogTitle>
-      <DialogContent className='adminDialogContent'>
-        {dialogProps.fields.map((field, i) => {
-          return <TextField
-            className='adminDialogRow'
-            key={field.fieldName}
-            value={form[field.fieldName]}
-            id={field.fieldName}
-            multiline
-            maxRows={20}
-            label={fieldNameLabel[field.fieldName]}
-            fullWidth
-            variant="outlined"
-            onChange={handleChange}
-          />;
-        })}
-      </DialogContent>
-      <DialogActions align='center'>
-        <Grid container justifyContent={'space-evenly'}>
-          <Button onClick={handleUpdateSubmit(
-            dialogProps.dbname,
-            form,
-            dialogProps.fields,
-            updateOpen.entity._id,
-          )}>{phrases['ADMIN-UPDATE-CONFIRM']}</Button>
-          <Button onClick={handleUpdateClose}>{phrases['ADMIN-UPDATE-CANCEL']}</Button>
-        </Grid>
-      </DialogActions>
+      <ValidatorForm
+        onSubmit={handleUpdateSubmit(dialogProps.dbname, form, dialogProps.fields, updateOpen.entity._id)}
+        className='validatorForm'
+      >
+        <DialogTitle align='center'>{phrases['ADMIN-UPDATE']} {dialogProps.dbname}</DialogTitle>
+        <DialogContent className='adminDialogContent'>
+          {dialogProps.fields.map((field) => {
+            return <TextValidator
+              className='adminDialogRow'
+              key={field.fieldName}
+              value={form[field.fieldName]}
+              id={field.fieldName}
+              validators={field.validationOnUpdate}
+              errorMessages={field.errorsOnUpdate}
+              multiline
+              maxRows={20}
+              label={fieldNameLabel[field.fieldName]}
+              fullWidth
+              variant="outlined"
+              onChange={handleChange}
+            />;
+          })}
+        </DialogContent>
+        <DialogActions align='center'>
+          <Grid container justifyContent={'space-evenly'}>
+            <Button type='submit'>{phrases['ADMIN-UPDATE-CONFIRM']}</Button>
+            <Button onClick={handleUpdateClose}>{phrases['ADMIN-UPDATE-CANCEL']}</Button>
+          </Grid>
+        </DialogActions>
+      </ValidatorForm>
     </Dialog>;
   }
 
@@ -491,7 +603,11 @@ const AdminPanel = (props) => {
       <Paper elevation={10} className='paper'>
         <Typography variant='h4' align='center'>{phrases['ADMIN-AUTH-TITLE']}</Typography>
         <TextField fullWidth onChange={handleAuthChange} />
-        <Typography align='center'><Button onClick={handleEnterAuthKey}>{phrases['ADMIN-AUTH-CONFIRM']}</Button></Typography>
+        <Typography align='center'>
+          <Button onClick={handleEnterAuthKey}>
+            {phrases['ADMIN-AUTH-CONFIRM']}
+          </Button>
+        </Typography>
         {error !== '' ?
           <Typography color='error' align='center'>
             {error}

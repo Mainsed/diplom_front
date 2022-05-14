@@ -11,3 +11,9 @@
 .adminDialogRow {
   margin: 5px 0px !important;
 }
+
+@media screen and (min-width: 600px) {
+  .validatorForm {
+    width: 550px;
+  }
+}
