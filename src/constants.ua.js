@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 export const translateUkr = {
   'DEPARTMENT-NAME': 'Кафедра програмних засобів',
   'ACTIVITY-START-YEAR': 'Рiк початку дiяльностi',

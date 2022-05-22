@@ -138,7 +138,9 @@ const Entrant = (props) => {
       </Grid>
       <Grid item xs={0} md={12} ><Divider /></Grid>
       <Grid item xs={12}>
-        <Typography align='center' variant='h6'>{phrases['PROFESSIONS-LIST-TITLE']}</Typography>
+        <Typography align='center' variant='h6' className='entrantElement'>
+          {phrases['PROFESSIONS-LIST-TITLE']}
+          </Typography>
         <Grid container>
           {proffesions.map((prof) => <Grid item xs={12} md={6} className='partMainPadding' key={prof.name}>
             <Grid container className='containerFullHeight' direction={'column'} justifyContent='space-between'>
@@ -166,7 +168,7 @@ const Entrant = (props) => {
           </Grid>)}
         </Grid>
       </Grid>
-      <Typography className='entrantElement'>{phrases['TABLE-ENTRANT-TITLE']}</Typography>
+      <Typography className='entrantElement' variant='h6'>{phrases['TABLE-ENTRANT-TITLE']}</Typography>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
