@@ -11,7 +11,6 @@ const RouteController = () => (
   <Box style={{ padding: '20px' }}>
     <Routes>
       <Route exact path={'/home'} element={<MainPageContainer />} />
-      {/* <Route exact path={'/cooperation'}element={<Cooperation />} /> */}
       <Route exact path={'/forentrant'}element={<EntrantContainer />} />
       <Route exact path={'/employment'}element={<EmploymentContainer />} />
       <Route exact path={'/faq'}element={<FAQContainer />} />

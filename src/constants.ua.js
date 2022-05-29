@@ -23,7 +23,7 @@ export const translateUkr = {
   'HEADER-STUDY-ABROAD': 'Навчання за кордоном',
   'HEADER-FOR-ABITURIENT': 'Для вступника',
   'HEADER-WORK': 'Працевлаштування',
-  'FOOTER-ADRESS-TITLE': 'Адресса:',
+  'FOOTER-ADRESS-TITLE': 'Адреса:',
   'FOOTER-PHONE-TITLE': 'Телефон:',
   'FOOTER-EMAIL-TITLE': 'Електронна пошта:',
   'FOOTER-ADRESS': 'вул. Жуковського 64, м. Запоріжжя, Україна, 69063',
