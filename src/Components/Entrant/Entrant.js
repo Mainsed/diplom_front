@@ -111,7 +111,12 @@ const Entrant = (props) => {
           <Typography className='entrantListElement'>{phrases['ENTRANT-EXAM-EXTRA-SESSION']}</Typography>
           <Grid container justifyContent={'center'}>
             <Button size='large'>
-              <a href="https://zno.testportal.com.ua/registration" className='link'>{phrases['EXAM-REGISTER']}</a>
+              <a target="_blank"
+                rel="noopener noreferrer"
+                href="https://zno.testportal.com.ua/registration"
+                className='link'>
+                {phrases['EXAM-REGISTER']}
+              </a>
             </Button>
           </Grid>
         </Grid>
@@ -126,12 +131,20 @@ const Entrant = (props) => {
             </Typography>)}
           <Grid container justifyContent={'space-evenly'}>
             <Button className='entrantListElement' size='large'>
-              <a href="https://pk.zp.edu.ua/pravyla-pryjomu/abituriyentam-pilgovyh-kategorij"
-                className='link'>{phrases['UNIVERSITY-ENTRY-QUESTIONS']}
+              <a target="_blank"
+                rel="noopener noreferrer"
+                href="https://pk.zp.edu.ua/pravyla-pryjomu/abituriyentam-pilgovyh-kategorij"
+                className='link'>
+                {phrases['UNIVERSITY-ENTRY-QUESTIONS']}
               </a>
             </Button>
             <Button className='entrantListElement' size='large'>
-              <a href="https://pk.zp.edu.ua/" className='link'>{phrases['UNIVERSITY-ENTRY-BENEFITS']}</a>
+              <a target="_blank"
+                rel="noopener noreferrer"
+                href="https://pk.zp.edu.ua/"
+                className='link'>
+                {phrases['UNIVERSITY-ENTRY-BENEFITS']}
+              </a>
             </Button>
           </Grid>
         </Grid>
@@ -140,12 +153,17 @@ const Entrant = (props) => {
       <Grid item xs={12}>
         <Typography align='center' variant='h6' className='entrantElement'>
           {phrases['PROFESSIONS-LIST-TITLE']}
-          </Typography>
+        </Typography>
         <Grid container>
           {proffesions.map((prof) => <Grid item xs={12} md={6} className='partMainPadding' key={prof.name}>
             <Grid container className='containerFullHeight' direction={'column'} justifyContent='space-between'>
               <Typography align='center'>
-                <a href={prof.link} className='link'>{prof[`name${props.language === 2 ? 'En' : ''}`]}</a>
+                <a target="_blank"
+                  rel="noopener noreferrer"
+                  href={prof.link}
+                  className='link'>
+                  {prof[`name${props.language === 2 ? 'En' : ''}`]}
+                </a>
               </Typography>
               <ul>
                 {prof[`requirements${props.language === 2 ? 'En' : ''}`].map(req => <li key={req}>

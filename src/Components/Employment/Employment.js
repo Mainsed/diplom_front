@@ -4,7 +4,7 @@ import './Employment.css';
 import { translateUkr } from '../../constants.ua';
 import { translateEng } from '../../constants.eng';
 
-const Entrant = (props) => {
+const Employment = (props) => {
   const phrases = props.language === 1 ? translateUkr : translateEng;
 
   const partnersInfo = props.partnersEmploymentInfo;
@@ -22,7 +22,7 @@ const Entrant = (props) => {
       {partnersInfo && partnersInfo.map((partnerInfo, i) => {
         return <Grid item xs={12} md={6} className='employmentElement' key={partnerInfo.name + i}>
           <Typography variant='h5' align='center'>
-            <a href={partnerInfo.link} className='link'>{partnerInfo.name}</a>
+            <a target="_blank" rel="noopener noreferrer" href={partnerInfo.link} className='link'>{partnerInfo.name}</a>
           </Typography>
           {partnerInfo[`headerText${props.language === 2 ? 'En' : ''}`]
             .map(text => <Typography variant='h6' key={text + i}>{text}</Typography>)}
@@ -36,7 +36,7 @@ const Entrant = (props) => {
       {employmentMaterials && employmentMaterials.map((material, i) => {
         return <Grid item xs={3} key={material.info + i}>
           <Button>
-            <a href={material.link} className='link'>
+            <a target="_blank" rel="noopener noreferrer" href={material.link} className='link'>
               {material[`info${props.language === 2 ? 'En' : ''}`]}
             </a>
           </Button>
@@ -60,4 +60,4 @@ const Entrant = (props) => {
   </Paper>;
 };
 
-export default Entrant;
+export default Employment;

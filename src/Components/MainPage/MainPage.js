@@ -12,26 +12,40 @@ const MainPage = (props) => {
   return <Paper elevation={10} className='paper'>
     <Grid container justifyContent={'space-evenly'} alignItems={'center'}>
       <Grid item xs={3}>
-        <a href="https://zp.edu.ua/"><Nuzp className='logo' /></a>
+        <a target="_blank" rel="noopener noreferrer" href="https://zp.edu.ua/"><Nuzp className='logo' /></a>
       </Grid>
       <Grid item xs={6}>
         <Grid container alignItems={'center'} direction={'column'}>
-          <a href="https://zp.edu.ua/kafedra-programnih-zasobiv" className='link'>
+          <a target="_blank"
+            rel="noopener noreferrer"
+            href="https://zp.edu.ua/kafedra-programnih-zasobiv"
+            className='link'>
             <Typography variant='h5'>{phrases['DEPARTMENT-NAME']}</Typography>
           </a>
           <Typography>{phrases['ACTIVITY-START-YEAR']}: 2002</Typography>
           <Typography>{phrases.ADMINISTRATION}</Typography>
           <Typography>{phrases['ADMINISTRATION-OF-KAFEDRA']}
-            <a href="https://zp.edu.ua/?q=node/664" className='link'>{phrases['HEAD-OF-THE-DEPARTMENT']}</a>
+            <a target="_blank"
+              rel="noopener noreferrer"
+              href="https://zp.edu.ua/?q=node/664"
+              className='link'>
+              {phrases['HEAD-OF-THE-DEPARTMENT']}
+            </a>
           </Typography>
-          <Typography><a href='https://pz.zntu.net/kafedra/vikladachi/'
-            className='link'>{phrases['TEACHERS-LINK-TITLE']}
-          </a>
+          <Typography>
+            <a target="_blank" rel="noopener noreferrer" href='https://pz.zntu.net/kafedra/vikladachi/'
+              className='link'>
+              {phrases['TEACHERS-LINK-TITLE']}
+            </a>
           </Typography>
         </Grid>
       </Grid>
       <Grid item xs={3}>
-        <a href="https://zp.edu.ua/kafedra-programnih-zasobiv"><Logo className='logo' /></a>
+        <a target="_blank"
+          rel="noopener noreferrer"
+          href="https://zp.edu.ua/kafedra-programnih-zasobiv">
+          <Logo className='logo' />
+        </a>
       </Grid>
       <Grid item xs={12}>
         <Divider className='divider'></Divider>
