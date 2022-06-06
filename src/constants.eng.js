@@ -41,9 +41,9 @@ export const translateEng = {
   'ENTRANT-EXAN-MAIN-SUBJECTS': 'Main subjects: Ukrainian language, Mathematics',
   'ENTRANT-EXAN-ADITIONAL-SUBJECTS': 'Electives: History of Ukraine foreign language biology | geography physics chemistry',
   'ENTRANT-EXAM-SCHEDULE-TITLE': 'EIT evaluation schedule',
-  'ENTRANT-EXAM-SCHEDULE': 'Physics May 23 (Monday), Chemistry May 26 (Thursday), Ukrainian Language May 31 (Tuesday), Ukrainian Language and Literature May 31 (Tuesday), Mathematics June 3 (Friday), Spanish Language June 06 (Monday), German language June 06 (Monday), French language June 6 (Monday), English language June 7 (Tuesday), History of Ukraine June 10 (Friday), Geography June 14 (Tuesday), Biology June 17 (Friday)',
+  'ENTRANT-EXAM-SCHEDULE': 'Physics July 2 (Saturday), Chemistry July 17 (Sunday), Ukrainian language June 30 (Thursday), Ukrainian language and literature June 30 (Thursday), Mathematics June 25 (Saturday), Spanish language July 06 (Wednesday), German language 06 July (Wednesday), French July 6 (Wednesday), English July 7 (Thursday), History of Ukraine July 9 (Saturday), Geography July 15 (Friday), Biology July 13 (Wednesday)',
   'ENTRANT-EXAM-EXTRA-SESSION-TITLE': 'Additional session',
-  'ENTRANT-EXAM-EXTRA-SESSION': 'An additional EIT session for participants who were unable to participate in the main testing session due to valid reasons will be held from June 23 to July 15, 2022.',
+  'ENTRANT-EXAM-EXTRA-SESSION': 'An additional EIT session for participants who were unable to participate in the main testing session due to valid reasons will be held from July 23 to August 11, 2022.',
   'EXAM-REGISTER': 'Register for external evaluation',
   'UNIVERSITY-ENTRY-DOCUMENT-LIST-TITLE': 'Documents required for admission to the university:',
   'UNIVERSITY-ENTRY-DOCUMENT-LIST-ARRAY': [
